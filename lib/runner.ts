@@ -1,5 +1,5 @@
 import { Task } from './task';
-import { TestMethods } from './testMethods';
+import { TestMethods } from './methods/testMethods';
 import { Platform } from './platforms/platform';
 import { EventEmitter } from 'events';
 import * as q from 'q';
@@ -59,6 +59,28 @@ export class Runner extends EventEmitter {
     }
 
     /**
+     * Executor of testPreparer
+     * @public
+     * @param {string[]=} An optional list of command line arguments the framework will accept.
+     * @return {q.Promise} A promise that will resolve when the test preparers
+     *     are finished.
+     */
+    runTestPreparer(extraFlags?: string[]): q.Promise<any> {
+        let unknownFlags = this.config_.unknownFlags_ || [];
+        if (extraFlags) {
+            unknownFlags = unknownFlags.filter((f) => extraFlags.indexOf(f) === -1);
+        }
+        if (unknownFlags.length > 0 && !this.config_.disableChecks) {
+            // TODO: Make this throw a ConfigError in Protractor 6.
+            logger.warn(
+                'Ignoring unknown extra flags: ' + unknownFlags.join(', ') + '. This will be' +
+                ' an error in future versions, please use --disableChecks flag to disable the ' +
+                ' Protractor CLI flag checks. ');
+        }
+        return helper.runFilenameOrFn_(this.config_.configDir, this.preparer_);
+    }
+
+    /**
      * Responsible for cleaning up test run and exiting the process.
      * @private
      * @param {int} Standard unix exit code
@@ -84,7 +106,8 @@ export class Runner extends EventEmitter {
     }
 
     getPlatform(): Platform {
-        return platforms.getPlatform(this.config_.platform);
+        let PlatformConstructor = platforms.getPlatform(this.config_.platform);
+        return new PlatformConstructor(this.config_.token);
     }
 
     /**
@@ -92,7 +115,13 @@ export class Runner extends EventEmitter {
      * @param platform 
      */    
     setupGlobals(platform: Platform) {
-        let testMethods = new TestMethods(platform);
+        let testMethods = new TestMethods(platform, this.config_);
+        if (this.config_.defaultGroup) {
+            platform.defaultGroup = this.config_.defaultGroup;
+        }
+        if (this.config_.botId) {
+            platform.defaultMention = this.config_.botId;
+        }
         global.app = testMethods;
     }
 

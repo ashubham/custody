@@ -7,11 +7,22 @@
         "declaration": true,
         "removeComments": false,
         "noImplicitAny": false,
-        "outDir": "built/"
+        "experimentalDecorators": true,
+        "outDir": "built/",
+        "typeRoots": [
+            "./typings",
+            "./node_modules/@types"
+        ],
+        "types": [
+            "@slack/client",
+            "node",
+            "jasmine"
+        ]
     },
     "exclude": [
         "built",
         "node_modules",
-        "spec/**/*"
+        "spec/**/*",
+        "typings/**/*"
     ]
 }

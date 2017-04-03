@@ -25,6 +25,7 @@
   "homepage": "https://github.com/ashubham/appraisal#readme",
   "devDependencies": {
     "@types/jasmine": "^2.5.47",
+    "@types/lodash": "^4.14.61",
     "@types/node": "^7.0.12",
     "@types/optimist": "0.0.29",
     "@types/q": "^1.0.0",
@@ -36,11 +37,14 @@
     "vrsource-tslint-rules": "^4.0.1"
   },
   "dependencies": {
+    "@slack/client": "^3.9.0",
     "jasmine": "^2.5.3",
     "jasminewd2": "^2.0.0",
+    "jsondiffpatch": "^0.2.4",
     "lodash": "^4.17.4",
     "mocha": "^3.2.0",
     "optimist": "^0.6.1",
-    "q": "^1.5.0"
+    "q": "^1.5.0",
+    "slack-node": "^0.1.8"
   }
 }

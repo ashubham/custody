@@ -3,6 +3,16 @@
         "node": true,
         "es6": true
     },
+    "globals": {
+        "beforeEach": false,
+        "beforeAll": false,
+        "afterAll": false,
+        "afterEach": false,
+        "expect": false,
+        "it": false,
+        "describe": false,
+        "app": false
+    },
     "rules": {
         "no-trailing-spaces": 2,
         "no-bitwise": 2,

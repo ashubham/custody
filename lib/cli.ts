@@ -19,6 +19,8 @@ process.argv.slice(2).forEach(function (arg: string) {
 let allowedNames = [
     'platform',
     'token',
+    'defaultGroup',
+    'botId',
     'specs',
     'exclude',
     'suites',
@@ -33,6 +35,9 @@ let optimistOptions: any = {
         version: 'Print Appraisal version',
         platform: 'Platform, e.g. slack or messenger',
         token: 'API token',
+        defaultGroup: 'The default channel/group where the test messages would' +
+        ' be posted.',
+        botId: 'The identification for the bot to be tested (for mentions etc.)',
         specs: 'Comma-separated list of files to test',
         exclude: 'Comma-separated list of files to exclude',
         verbose: 'Print full spec names',

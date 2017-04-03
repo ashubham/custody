@@ -1,7 +1,8 @@
+import { Platform } from './platforms/platform';
 import * as glob from 'glob';
 import * as path from 'path';
 
-import { Config } from './config';
+import { Config, SupportedPlatforms, platformNameToPlatform } from './config';
 import { ConfigError } from './exitCodes';
 import { Logger } from './logger';
 
@@ -14,13 +15,14 @@ export class ConfigParser {
         this.config_ = {
             specs: [],
             allScriptsTimeout: 11000,
+            waitTimeout: 30000,
             params: {},
+            substitutions: {},
             framework: 'jasmine',
+            platform: SupportedPlatforms.SLACK,
             jasmineNodeOpts: { showColors: true, defaultTimeoutInterval: (30 * 1000) },
             mochaOpts: { ui: 'bdd', reporter: 'list' },
-            configDir: './',
-            noGlobals: false,
-            skipSourceMapSupport: false
+            configDir: './'
         };
     }
 
@@ -100,6 +102,10 @@ export class ConfigParser {
                     additionalConfig[name] = path.resolve(relativeTo, additionalConfig[name]);
                 }
             });
+        if (additionalConfig['platform'] && typeof additionalConfig['platform'] === 'string') {
+            let platformName = additionalConfig['platform'];
+            additionalConfig['platform'] = platformNameToPlatform[platformName];
+        }
 
         merge_(this.config_, additionalConfig);
     }
