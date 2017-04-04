@@ -106,8 +106,7 @@ export class Runner extends EventEmitter {
     }
 
     getPlatform(): Platform {
-        let PlatformConstructor = platforms.getPlatform(this.config_.platform);
-        return new PlatformConstructor(this.config_.token);
+        return platforms.getPlatform(this.config_);
     }
 
     /**
@@ -116,8 +115,8 @@ export class Runner extends EventEmitter {
      */    
     setupGlobals(platform: Platform) {
         let testMethods = new TestMethods(platform, this.config_);
-        if (this.config_.defaultGroup) {
-            platform.defaultGroup = this.config_.defaultGroup;
+        if (this.config_.defaultRecipient) {
+            platform.defaultRecipient = this.config_.defaultRecipient;
         }
         if (this.config_.botId) {
             platform.defaultMention = this.config_.botId;
@@ -128,12 +127,14 @@ export class Runner extends EventEmitter {
     run(): q.Promise<any> {
         let testPassed: boolean;
         let results: any;
+        this.config_.specs = this.task.specs;
 
         return q.resolve(null)
             .then(() => {
                 let platform = this.getPlatform();
-                this.setupGlobals(platform);
+                return platform.auth();
             })
+            .then(this.setupGlobals.bind(this))
             .then(() => {
                 // Do the framework setup here so that jasmine and mocha globals are
                 // available to the onPrepare function.

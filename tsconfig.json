@@ -16,7 +16,8 @@
         "types": [
             "@slack/client",
             "node",
-            "jasmine"
+            "jasmine",
+            "facebook-chat-api"
         ]
     },
     "exclude": [

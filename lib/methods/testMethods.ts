@@ -45,7 +45,7 @@ export class TestMethods {
     }
 
     @flowify
-    getLastMesssage(group?: string): PromiseLike<Message> {
+    getLastMessage(group?: string): PromiseLike<Message> {
         return this.platform.getLastMessage(group);
     }
 
@@ -62,6 +62,7 @@ export class TestMethods {
                             opts.additionalNormalizer,
                             opts.skipNormalization
                         );
+                        //console.log(latestDelta, message);
                     } catch (e) {
                         _logger.error(e);
                     }

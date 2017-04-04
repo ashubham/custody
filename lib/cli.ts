@@ -16,10 +16,13 @@ process.argv.slice(2).forEach(function (arg: string) {
     args.push(arg);
 });
 
+
 let allowedNames = [
     'platform',
     'token',
-    'defaultGroup',
+    'email',
+    'password',
+    'defaultRecipient',
     'botId',
     'specs',
     'exclude',
@@ -35,7 +38,10 @@ let optimistOptions: any = {
         version: 'Print Appraisal version',
         platform: 'Platform, e.g. slack or messenger',
         token: 'API token',
-        defaultGroup: 'The default channel/group where the test messages would' +
+        email: 'User email to send messages as (Messenger only)',
+        password: 'User password of the email provided (Messenger only).' +
+        ' PS: Messenger does not provide token based user messages yet.',
+        defaultRecipient: 'The default channel/group/user where the test messages would' +
         ' be posted.',
         botId: 'The identification for the bot to be tested (for mentions etc.)',
         specs: 'Comma-separated list of files to test',

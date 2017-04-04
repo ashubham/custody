@@ -1,7 +1,7 @@
 import { Message, MessageTypes } from './message';
 import { Logger } from './../logger';
 import { WebClient } from '@slack/client';
-import { createKeyDeleteNormalizer } from './normalizers';
+import { createKeyDeleteNormalizer, createAddKeyNormalizer } from './normalizers';
 import { Platform, GroupTypes } from './platform';
 import * as q from 'q';
 let logger = new Logger('slack');
@@ -49,14 +49,13 @@ export class Slack extends Platform {
     };
 
     constructor(token: string) {
-        super(token);
-        console.log('Using Slack Platform');
+        super();
+        logger.info('Using Slack Platform');
         this.client = new WebClient(token);
-        this.createNormalizers();
     }
 
-    post(message: string, skipMention?: boolean, group?: string) {
-        let channel = group || this.defaultGroup;
+    post(message: string, skipMention?: boolean, group?: string): PromiseLike<any> {
+        let channel = group || this.defaultRecipient;
         return this.client.chat.postMessage(channel, message, {
             as_user: true
         })
@@ -70,7 +69,7 @@ export class Slack extends Platform {
     }
 
     getLastMessage(
-        channel: string = this.defaultGroup
+        channel: string = this.defaultRecipient
     ): PromiseLike<SlackMessage> {
         let groupType = this.getGroupType(channel);
         let apiMethod = Slack.groupTypeToAPIMethod[groupType];
@@ -88,13 +87,14 @@ export class Slack extends Platform {
         return Slack.prefixToGroupTypes[prefix];
     }
 
-    private createNormalizers() {
+    protected createNormalizers() {
         let keyDel = createKeyDeleteNormalizer(
             'type',
             'user',
             'ts',
             'subtype'
         );
-        this.normalizers.push(keyDel);
+        let addKey = createAddKeyNormalizer({ attachments: [] });
+        this.normalizers.push(keyDel, addKey);
     }    
 }

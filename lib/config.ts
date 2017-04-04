@@ -7,7 +7,7 @@ export enum SupportedPlatforms {
 export let platformNameToPlatform = {
     slack: SupportedPlatforms.SLACK,
     messenger: SupportedPlatforms.MESSENGER
-}
+};
 
 export interface Config {
     [key: string]: any;
@@ -19,7 +19,7 @@ export interface Config {
     substitutions?: {
         [key: string]: string
     };
-    defaultGroup?: string;
+    defaultRecipient?: string;
     framework?: string;
     botId?: string;
 
