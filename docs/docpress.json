@@ -1,0 +1,17 @@
+{
+    "github": "ashubham/appraisal",
+    "css": [
+        "http://ricostacruz.com/docpress-rsc/style.css",
+        "docs/assets/custom.css"
+    ],
+    "markdown": {
+        "typographer": true,
+        "plugins": {
+            "decorate": {}
+        }
+    },
+    "plugins": {
+        "docpress-core": {},
+        "docpress-base": {}
+    }
+}

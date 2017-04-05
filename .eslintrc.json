@@ -11,7 +11,8 @@
         "expect": false,
         "it": false,
         "describe": false,
-        "app": false
+        "app": false,
+        "jasmine": false
     },
     "rules": {
         "no-trailing-spaces": 2,
