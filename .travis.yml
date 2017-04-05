@@ -1,9 +1,10 @@
+language: node_js
 node_js:
 - 6.9
 
 env:
   global:
-    - GIT_NAME: Travis CI
+    - GIT_NAME: ashubham
     - GIT_EMAIL: ashubham@gmail.com
     - GITHUB_REPO: ashubham/appraisal
     - GIT_SOURCE: _docpress
