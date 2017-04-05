@@ -1,0 +1,50 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "appraisal",
+        "source": "README.md",
+        "expand": true,
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Getting Started",
+            "depth": 2,
+            "id": "getting-started"
+          },
+          {
+            "title": "Basic Usage",
+            "depth": 2,
+            "id": "basic-usage"
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "README.md",
+      "title": "appraisal",
+      "pageTitle": "appraisal",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Getting Started",
+          "depth": 2,
+          "id": "getting-started"
+        },
+        {
+          "title": "Basic Usage",
+          "depth": 2,
+          "id": "basic-usage"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "README.md": "index.html",
+    "docs/docpress.json": "docpress.json",
+    "docs/assets/custom.css": "assets/custom.css"
+  }
+}
