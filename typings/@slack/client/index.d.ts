@@ -3,7 +3,34 @@
 // Definitions by: John Zanutto <https://github.com/jzanutto>, Bilal Aijazi <https://github.com/bmajz>
 
 declare module '@slack/client' {
-    class WebClient {
+    export class WebClient {
+        constructor(
+            token: string,
+            options?: {
+                slackAPIUrl?: string,
+                transport?: any,
+                retryConfig?: any,
+                maxRequestConcurrency?: number,
+                logLevel?: string,
+                logger?: any,
+            });
+        chat: {
+ 
+            postMessage: {
+                (channel: string, text: string, opts?: SlackChatPostMessageParams) : Promise<SlackChatPostMessageResult>;
+                (channel: string, text: string, opts: SlackChatPostMessageParams, callback: (err: Error, result: SlackChatPostMessageResult) => void) : void;
+            }
+        };
+        files: {
+            
+            upload: {
+                (filename: string, opts?: Object) : Promise<Object>;
+                (filename: string, opts: Object, callback: (err: Error, result: Object) => void) : void;
+            }
+           
+        };
+    }
+    /*export class WebClient {
         constructor(
             token: string,
             options?: {
@@ -15,8 +42,10 @@ declare module '@slack/client' {
                 logger?: any,
             });
         api: {
-            test: (opts?: SlackApiTestParams) => Promise<SlackApiTestResult>;
-            test: (opts?: SlackApiTestParams, callback: (err: Error, result: SlackApiTestResult) => void) => void;
+            test: {
+                (opts?: SlackApiTestParams) : Promise<SlackApiTestResult>;
+                (opts: SlackApiTestParams, callback: (err: Error, result: SlackApiTestResult) => void) : void;
+            }
         };
         auth: {
             revoke: (opts?: SlackAuthRevokeParams) => Promise<SlackAuthRevokeResult>;
@@ -380,7 +409,7 @@ declare module '@slack/client' {
         };
 
         on(event: CLIENT_EVENTS.WEB.RATE_LIMITED_TYPE, handler?: (headerSecs: number) => void): void;
-    }
+    }*/
 
     class RtmClientBase {
         ws: WebSocket;
@@ -774,72 +803,72 @@ declare module '@slack/client' {
 
     class MemoryDataStore extends DataStore {
     }
-}
 
-// Slack Data Store
-class DataStore {
-    constructor(opts?: { logLevel: string, logger: any; });
+    // Slack Data Store
+    class DataStore {
+        constructor(opts?: { logLevel: string, logger: any; });
 
-    registerMessageHandler(event: any, handler: any): void;
+        registerMessageHandler(event: any, handler: any): void;
 
-    users: any;
-    channels: any;
-    dms: any;
-    groups: any;
-    bots: any;
-    teams: any;
-    clear(): void;
+        users: any;
+        channels: any;
+        dms: any;
+        groups: any;
+        bots: any;
+        teams: any;
+        clear(): void;
 
-    // Getters
-    getUserById(userId: string): any;
-    getUserByName(name: string): any;
-    getUserByEmail(email: string): any;
-    getUserByBotId(botId: string): any;
-    getChannelById(channelId: string): any;
-    getChannelByName(name: string): any;
-    getGroupById(groupId: string): any;
-    getGroupByName(name: string): any;
-    getDMById(dmId: string): any;
-    getDMByName(name: string): any;
-    getDMByUserId(id: string): any;
-    getBotById(botId: string): any;
-    getBotByName(name: string): any;
-    getBotByUserId(userId: string): any;
-    getTeamById(teamId: string): any;
-    getUnreadCount(): any;
+        // Getters
+        getUserById(userId: string): any;
+        getUserByName(name: string): any;
+        getUserByEmail(email: string): any;
+        getUserByBotId(botId: string): any;
+        getChannelById(channelId: string): any;
+        getChannelByName(name: string): any;
+        getGroupById(groupId: string): any;
+        getGroupByName(name: string): any;
+        getDMById(dmId: string): any;
+        getDMByName(name: string): any;
+        getDMByUserId(id: string): any;
+        getBotById(botId: string): any;
+        getBotByName(name: string): any;
+        getBotByUserId(userId: string): any;
+        getTeamById(teamId: string): any;
+        getUnreadCount(): any;
 
-    // Setters
-    setChannel(channel: any): void;
-    setGroup(group: any): void;
-    setDM(dm: any): void;
-    setUser(user: any): void;
-    setBot(bot: any): void;
-    setTeam(team: any): void;
+        // Setters
+        setChannel(channel: any): void;
+        setGroup(group: any): void;
+        setDM(dm: any): void;
+        setUser(user: any): void;
+        setBot(bot: any): void;
+        setTeam(team: any): void;
 
-    // Upserts
-    upsertChannel(channel: any): void;
-    upsertGroup(group: any): void;
-    upsertDM(dm: any): void;
-    upsertUser(user: any): void;
-    upsertBot(bot: any): void;
-    upsertTeam(team: any): void;
+        // Upserts
+        upsertChannel(channel: any): void;
+        upsertGroup(group: any): void;
+        upsertDM(dm: any): void;
+        upsertUser(user: any): void;
+        upsertBot(bot: any): void;
+        upsertTeam(team: any): void;
 
-    // Deletion
-    removeChannel(channelId: string): void;
-    removeGroup(groupId: string): void;
-    removeDM(dmId: string): void;
-    removeUser(userId: string): void;
-    removeBot(botId: string): void;
-    removeTeam(teamId: string): void;
+        // Deletion
+        removeChannel(channelId: string): void;
+        removeGroup(groupId: string): void;
+        removeDM(dmId: string): void;
+        removeUser(userId: string): void;
+        removeBot(botId: string): void;
+        removeTeam(teamId: string): void;
 
-    // Helpers
-    upsertChannelGroupOrDMById(id: string, obj: any): void;
-    getChannelGroupOrDMById(objId: string): any;
-    getChannelOrGroupByName(name: string): any;
+        // Helpers
+        upsertChannelGroupOrDMById(id: string, obj: any): void;
+        getChannelGroupOrDMById(objId: string): any;
+        getChannelOrGroupByName(name: string): any;
 
-    // Web API response handlers
-    cacheRtmStart(data: any);
-    handleRtmMessage(activeUserId: string, activeTeamId: string, messageType: string, message: string);
+        // Web API response handlers
+        cacheRtmStart(data: any);
+        handleRtmMessage(activeUserId: string, activeTeamId: string, messageType: string, message: string);
+    }
 }
 
 // Web API Parameters and results

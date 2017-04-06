@@ -3,7 +3,7 @@ import { EventEmitter } from 'events';
 import * as Q from 'q';
 let logger = new Logger('Control-Flow');
 export class ControlFlow extends EventEmitter {
-    private commandChain = Q.when();
+    private commandChain = Q.when(null);
     private numTasks: number = 0;
     private _isIdle: boolean = false;
     constructor() {
@@ -15,11 +15,12 @@ export class ControlFlow extends EventEmitter {
         this._isIdle = false;
         return this.commandChain = this.commandChain
             .then(fn)
-            .then(() => { 
+            .then((value) => { 
                 if (--this.numTasks === 0) {
                     this.emit('idle');
                     this._isIdle = true;
                 }
+                return null;
             }, err => {
                 logger.debug('FAILED: ERROR OCCURRED');
                 if (typeof fail === 'function') {

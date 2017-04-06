@@ -24,6 +24,6 @@
         "built",
         "node_modules",
         "spec/**/*",
-        "typings/**/*"
+        "typings"
     ]
 }

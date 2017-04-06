@@ -1,12 +1,10 @@
-# appraisal
+# custody
 <!--{h1:.massive-header.-with-tagline}-->
 
-> E2E testing for chatbots!
-<br>
+> Naughty chatbots, Disciplined!
 
-
-Easy, too easy E2E test framework your conversational bots.<br>
-Platform agnostic, supports Messenger, Slack, more ?
+E2E test framework for your conversational bot. <br>
+Supports Messenger, Slack, more ?
 
 [![Build Status](https://travis-ci.org/ashubham/appraisal.svg?branch=master)](https://travis-ci.org/ashubham/appraisal)
 [![npm version](https://badge.fury.io/js/appraisal.svg)](https://badge.fury.io/js/appraisal)

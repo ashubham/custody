@@ -1,8 +1,9 @@
 import { Logger } from './../logger';
 import * as q from 'q';
 let waitLogger = new Logger('Wait');
-let RETRY_WAIT = 500;
-let DEFAULT_WAIT_TIMEOUT = 10000;
+
+const DEFAULT_WAIT_TIMEOUT = 10000;
+const RETRY_WAIT = 100;
 
 export function wait(
     method: (() => any|PromiseLike<any>)|PromiseLike<any>, 
@@ -32,4 +33,4 @@ export function wait(
     }
     run();
     return deferred.promise;
-} 
+}

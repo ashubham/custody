@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import { Promise, when } from 'q';
+import { Promise, when, defer } from 'q';
 
 /**
  * Internal helper for abstraction of polymorphic filenameOrFn properties.
@@ -34,4 +34,20 @@ export function runFilenameOrFn_(configDir: string, filenameOrFn: any, args?: an
             resolvePromise(undefined);
         }
     });
+}
+
+export function promisify(target: Object, pKey: string, descriptor: PropertyDescriptor) {
+    descriptor = descriptor || Object.getOwnPropertyDescriptor(target, pKey);
+    let originalMethod = descriptor.value;
+    descriptor.value = function () {
+        let deferred = defer();
+        let args = [...arguments, (err, response) => {
+            if (err) {
+                return deferred.reject(err);
+            }
+            return deferred.resolve(response);
+        }];
+        return originalMethod(...args);
+    };
+    return descriptor;
 }

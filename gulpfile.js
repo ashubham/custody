@@ -11,13 +11,13 @@ var path = require('path');
 var glob = require('glob');
 var semver = require('semver');
 
-var runSpawn = function (done, task, opt_arg, opt_io) {
-    opt_arg = typeof opt_arg !== 'undefined' ? opt_arg : [];
+var runSpawn = function (done, task, optArg, optIo) {
+    optArg = typeof optArg !== 'undefined' ? optArg : [];
     var stdio = 'inherit';
-    if (opt_io === 'ignore') {
+    if (optIo === 'ignore') {
         stdio = 'ignore';
     }
-    var child = spawn(task, opt_arg, { stdio: stdio });
+    var child = spawn(task, optArg, { stdio: stdio });
     var running = false;
     child.on('close', function () {
         if (!running) {

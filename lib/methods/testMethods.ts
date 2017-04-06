@@ -6,20 +6,61 @@ import { Config } from './../config';
 import { Platform } from '../platforms/platform';
 import * as jsondiffpatch from 'jsondiffpatch';
 import * as q from 'q';
+import * as path from 'path';
+import callerPath = require('caller-path');
 import { wait } from './method-utils';
 
 let _logger = new Logger('test-methods');
+
+/**
+ * Options available when posting messages.
+ * 
+ * @export
+ * @interface PostMessageOptions
+ */
 export interface PostMessageOptions {
+    /**
+     * Do not wait for a response to the posted message.
+     * 
+     * @type {boolean}
+     * @memberOf PostMessageOptions
+     */
     skipWait?: boolean;
+
+    /**
+     * Do not tag the name of the reciever in the beginning of the message.
+     * 
+     * @type {boolean}
+     * @memberOf PostMessageOptions
+     */
     skipMention?: boolean;
-    group?: string;
+
+    /**
+     * The reciever id.
+     * 
+     * @type {string}
+     * @memberOf PostMessageOptions
+     */
+    reciever?: string;
 }
 
 export interface WaitForResponseOptions {
-    group?: string;
+    /**
+     * The reciever id.
+     * 
+     * @type {string}
+     * @memberOf WaitForResponseOptions
+     */
+    reciever?: string;
     additionalNormalizer?: (msg: any) => any;
     timeout?: number;
     skipNormalization?: boolean;
+}
+
+export interface UploadFileOptions {
+    comment?: string;
+    reciever?: string;
+    skipWait?: boolean;
 }
 export class TestMethods {
 
@@ -28,32 +69,56 @@ export class TestMethods {
         this.defaultTimeout = config_.waitTimeout;
     }
 
+    /**
+     * Posts a message to the specified/default reciever.
+     *
+     * This methods waits for a response from the reciever, this
+     * behaviour can be turned off by setting skipWait: true in the options.
+     *
+     * @param message string
+     * @param opts PostMessageOptions
+     */    
     @flowify
     postMessage(message: string, opts: PostMessageOptions = {}) {
         if (opts.skipWait) {
-            return this.platform.post(message, opts.skipMention, opts.group);
+            return this.platform.post(message, opts.skipMention, opts.reciever);
         }
 
-        return this.platform.post(message, opts.skipMention, opts.group)
+        return this.platform.post(message, opts.skipMention, opts.reciever)
             .then((response) => {
                 return this.waitForMessageAfterTs(response.ts);
             });
     }
 
-    sleep() {
+    @flowify
+    uploadFile(filepath: string, opts: UploadFileOptions = {}) {
+        let callerDir = path.dirname(callerPath());
+        let absPath = path.resolve(callerDir, filepath);
+        if (opts.skipWait) {
+            return this.platform.uploadFile(absPath, opts.comment, opts.reciever);
+        }
 
+        return this.platform.uploadFile(absPath, opts.comment, opts.reciever)
+            .then((response) => {
+                return this.waitForMessageAfterTs(response.ts);
+            });
+    }    
+
+    @flowify    
+    sleep(time: number) {
+        return q.delay(time);
     }
 
     @flowify
-    getLastMessage(group?: string): PromiseLike<Message> {
-        return this.platform.getLastMessage(group);
+    getLastMessage(reciever?: string): PromiseLike<Message> {
+        return this.platform.getLastMessage(reciever);
     }
 
     @flowify    
-    waitForResponseToMatch(target : object|string, opts: WaitForResponseOptions = {}) {
+    waitForResponseToBe(target : object|string, opts: WaitForResponseOptions = {}) {
         let latestDelta = null;
         return wait(() => {
-            return this.platform.getLastMessage(opts.group)
+            return this.platform.getLastMessage(opts.reciever)
                 .then((message) => {
                     try {
                         latestDelta = this.platform.compare(
@@ -77,9 +142,9 @@ export class TestMethods {
         });
     }
 
-    waitForFileShare(group?: string) {
+    waitForFileShare(reciever?: string) {
         return wait(() => {
-            return this.platform.getLastMessage(group).
+            return this.platform.getLastMessage(reciever).
                 then((message) => {
                     return message.type === MessageTypes.FILE_SHARE;
                 });
@@ -95,9 +160,9 @@ export class TestMethods {
     ) {
         return wait(method, message, timeout);
     }
-    private waitForMessageAfterTs(timestamp: number | string, group?: string) {
+    private waitForMessageAfterTs(timestamp: number | string, reciever?: string) {
         return wait(() => {
-            return this.platform.getLastMessage(group).then(message => {
+            return this.platform.getLastMessage(reciever).then(message => {
                 return message.ts > timestamp;
             });
         }, 'Message after timestamp');

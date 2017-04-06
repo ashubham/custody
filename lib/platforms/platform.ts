@@ -60,8 +60,13 @@ export class Platform {
         return MessageTypes.None;
     }
 
-    //TODO(Ashish): Support Files/Emojis/URL.    
-    post(message: string, skipMention?: boolean, group?: string): PromiseLike<any> {
+    //TODO(Ashish): Support Emojis/URL.    
+    post(message: string, skipMention?: boolean, reciever?: string): PromiseLike<any> {
+        logger.warn('Method not implemented');
+        return q.reject('Post: Method not implemented');
+    }
+
+    uploadFile(absPath: string, comment?: string, reciever?: string): PromiseLike<any> {
         logger.warn('Method not implemented');
         return q.reject('Post: Method not implemented');
     }

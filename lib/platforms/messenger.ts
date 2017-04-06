@@ -1,9 +1,17 @@
 import { Message, MessageTypes } from './message';
 import { Platform } from './platform';
-import * as login from 'facebook-chat-api';
+import login = require('facebook-chat-api');
 import { Logger } from './../logger';
 import * as q from 'q';
-import { createKeyDeleteNormalizer, createRenameKeyNormalizer, createDeleteNullUndefinedNormalizer, createAddKeyNormalizer } from "./normalizers";
+import * as path from 'path';
+import * as fs from 'fs';
+import {
+    createKeyDeleteNormalizer,
+    createRenameKeyNormalizer,
+    createDeleteNullUndefinedNormalizer,
+    createAddKeyNormalizer
+} from "./normalizers";
+
 let logger = new Logger('Messenger');
 
 export class MessengerMessage implements Message {
@@ -61,6 +69,19 @@ export class Messenger extends Platform {
         });
 
         return deferred.promise;
+    }
+
+    uploadFile(
+        absPath: string,
+        comment: string = '',
+        reciever: string = this.defaultRecipient
+    ): PromiseLike<any> {
+        let message = {
+            attachment: fs.createReadStream(absPath),
+            body: comment
+        };
+        return q.ninvoke(this.client.files, 'sendMessage', message)
+            .then(resp => new MessengerMessage(resp));
     }
 
     getLastMessage(

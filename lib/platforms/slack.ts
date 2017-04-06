@@ -4,6 +4,9 @@ import { WebClient } from '@slack/client';
 import { createKeyDeleteNormalizer, createAddKeyNormalizer } from './normalizers';
 import { Platform, GroupTypes } from './platform';
 import * as q from 'q';
+import * as path from 'path';
+import * as fs from 'fs';
+
 let logger = new Logger('slack');
 
 export class SlackMessage implements Message {
@@ -68,6 +71,19 @@ export class Slack extends Platform {
             });
     }
 
+    uploadFile(
+        absPath: string,
+        comment?: string,
+        reciever: string = this.defaultRecipient
+    ) {
+        let filename = path.basename(absPath);
+        let file = fs.createReadStream(absPath);
+        return this.client.files.upload(filename, {
+            file: file,
+            initial_comment: comment,
+            channels: reciever
+        });
+    }
     getLastMessage(
         channel: string = this.defaultRecipient
     ): PromiseLike<SlackMessage> {
