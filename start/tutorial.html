@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../assets/style.css?t=615badd5">
+    <link rel="stylesheet" href="https://ricostacruz.com/docpress-rsc/style.css">
+    <link rel="stylesheet" href="../assets/custom.css?t=31384f59">
+    <script src="../assets/script.js?t=42463e55"></script>
+    <title>Tutorial - Appraisal</title>
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a class="link title  link-index" href="../index.html">Appraisal</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Quick Start</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title -active link-starttutorial" href="../start/tutorial.html">Tutorial</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a class="hlink link-prerequisites" href="#prerequisites">Prerequisites</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a class="hlink link-slack" href="#slack">Slack</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a class="hlink link-messenger" href="#messenger">Messenger</a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-setup" href="#setup">Setup</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a class="hlink link-step-0-write-a-test" href="#step-0-write-a-test">Step 0 - write a test</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Reference</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a class="link title  link-referenceconfig" href="../reference/config.html">Configuation</a>
+                </li>
+                <li class="menu-item -level-2 -parent"><span class="title">API Reference</span>
+                  <ul class="submenu">
+                    <li class="menu-item -level-3"><a class="link title  link-referenceapipostmessage" href="../reference/api/postMessage.html">postMessage</a>
+                    </li>
+                    <li class="menu-item -level-3"><span class="title">uploadFile</span>
+                    </li>
+                    <li class="menu-item -level-3"><span class="title">sleep</span>
+                    </li>
+                    <li class="menu-item -level-3"><span class="title">getLastMessage</span>
+                    </li>
+                    <li class="menu-item -level-3"><span class="title">waitForResponseToBe</span>
+                    </li>
+                    <li class="menu-item -level-3"><span class="title">waitForFileShare</span>
+                    </li>
+                    <li class="menu-item -level-3"><span class="title">wait</span>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+      <div class="body page-starttutorial">
+        <div class="header-nav">
+          <div class="right"><a class="iconlink" href="https://github.com/ashubham/appraisal" data-title="ashubham/appraisal">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="tutorial">Tutorial</h1>
+<p>Custody is a Node.js program. To run, you will need to have Node.js(&gt;6) installed.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>By default, Custody uses the Jasmine test framework for its testing interface. You could however use Mocha too. This tutorial assumes some familiarity with Jasmine, and we will use version 2.4.</p>
+<p>Additional prereuisites as per the platform:</p>
+<h3 id="slack">Slack</h3>
+<p>Generate a <em>Slack</em> user testing token. One can easily generate tester tokens using the <a href="https://api.slack.com/custom-integrations/legacy-tokens">token generator</a>.
+Or can use an oauth token from <a href="https://api.slack.com/docs/oauth">here</a>.</p>
+<h3 id="messenger">Messenger</h3>
+<p><em>Messenger</em> does not support token based messaging for users. So we need
+to use a <code>email/password</code> pair to emulate a user sending mesages to the bot being
+tested.</p>
+<h2 id="setup">Setup</h2>
+<p>Use npm to install <em>Custody</em> globally with:</p>
+<pre><code class="lang-sh">npm install -g custody
+</code></pre>
+<p>Try running <code>custody --version</code> to make sure it&#x2019;s working.</p>
+<h2 id="step-0-write-a-test">Step 0 - write a test</h2>
+<p>Custody needs two files to run, a <strong>spec file</strong> and a <strong>configuration</strong>.</p>
+<p>Lets start with a simple test that evaluates a simple pizza delivery bot on slack.</p>
+<p>Copy the following into spec.js:</p>
+<pre><code class="lang-javascript">describe(<span class="pl-s">&apos;Pizza bot test&apos;</span>, <span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params"></span>) </span>{
+    it(<span class="pl-s">&apos;Should reply with pizza types on initial message&apos;</span>, <span class="hljs-function"><span class="pl-k">function</span>(<span class="hljs-params"></span>) </span>{
+        csty.postMessage(<span class="pl-s">&apos;Hey ssup ?&apos;</span>);
+        expect(csty.getLastMessage(<span class="pl-c1">true</span>)).toMatch(<span class="hljs-regexp">/The pizzas available are.*/</span>);
+    });
+});
+</code></pre>
+<p>The <code>describe</code> and <code>it</code> syntax is from the <em>Jasmine</em> framework. <code>csty</code> is a global created by Custody, which is used for conversational commands such as posting a message with <code>csty.postMessage</code>.</p>
+<p>Now create the configuration file, copy the follwing into conf.js:</p>
+<pre><code class="lang-javascript">exports.config = {
+  <span class="hljs-attr">framework</span>: <span class="pl-s">&apos;jasmine&apos;</span>,
+  <span class="hljs-attr">platform</span>: <span class="pl-s">&apos;slack&apos;</span>,
+  <span class="hljs-attr">token</span>: $SLACK_TOKEN,
+  <span class="hljs-attr">specs</span>: [<span class="pl-s">&apos;spec.js&apos;</span>],
+  <span class="hljs-attr">defaultReciever</span>: <span class="pl-s">&apos;C123454&apos;</span>
+}
+</code></pre>
+<p>This configuration tells Custody where your test files (<code>specs</code>) are, and which messaging platform to use (<code>platform</code>). It specifies that we will be using Jasmine for the test framework. The <code>token</code> speciefies the auth token we created in the step above. The <code>defaultReciever</code> is the id of the channel where our message would be posted. It will use the defaults for all other configuration.</p>
+<p>Now run the test with</p>
+<pre><code class="lang-haskell"><span class="pl-ent">custody</span> conf.js
+</code></pre>
+<p>You should see in your slack window, on the channel you mentioned, a message being posted <code>Hey ssup ?</code>. The bot (if working as intended) should reply with the expected response. Congratulations, you&#x2019;ve run your first Custody test!</p>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="../index.html"><span class="title">Appraisal</span></a></div>
+          <div class="right"><a href="../reference/config.html"><span class="label">Next: </span><span class="title">Configuation</span></a></div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

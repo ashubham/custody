@@ -2,9 +2,8 @@
   "toc": {
     "sections": [
       {
-        "title": "appraisal",
+        "title": "Appraisal",
         "source": "README.md",
-        "expand": true,
         "url": "index.html",
         "slug": "index",
         "headings": [
@@ -19,14 +18,101 @@
             "id": "basic-usage"
           }
         ]
+      },
+      {
+        "title": "Quick Start",
+        "sections": [
+          {
+            "title": "Tutorial",
+            "source": "docs/start/tutorial.md",
+            "url": "start/tutorial.html",
+            "slug": "starttutorial",
+            "headings": [
+              {
+                "title": "Prerequisites",
+                "depth": 2,
+                "id": "prerequisites",
+                "headings": [
+                  {
+                    "title": "Slack",
+                    "depth": 3,
+                    "id": "slack"
+                  },
+                  {
+                    "title": "Messenger",
+                    "depth": 3,
+                    "id": "messenger"
+                  }
+                ]
+              },
+              {
+                "title": "Setup",
+                "depth": 2,
+                "id": "setup"
+              },
+              {
+                "title": "Step 0 - write a test",
+                "depth": 2,
+                "id": "step-0-write-a-test"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Reference",
+        "sections": [
+          {
+            "title": "Configuation",
+            "source": "docs/reference/config.md",
+            "url": "reference/config.html",
+            "slug": "referenceconfig"
+          },
+          {
+            "title": "API Reference",
+            "sections": [
+              {
+                "title": "postMessage",
+                "source": "docs/reference/api/postMessage.md",
+                "url": "reference/api/postMessage.html",
+                "slug": "referenceapipostmessage",
+                "headings": [
+                  {
+                    "title": "PostMessageOptions",
+                    "depth": 3,
+                    "id": "postmessageoptions"
+                  }
+                ]
+              },
+              {
+                "title": "uploadFile"
+              },
+              {
+                "title": "sleep"
+              },
+              {
+                "title": "getLastMessage"
+              },
+              {
+                "title": "waitForResponseToBe"
+              },
+              {
+                "title": "waitForFileShare"
+              },
+              {
+                "title": "wait"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
   "index": {
     "index.html": {
       "source": "README.md",
-      "title": "appraisal",
-      "pageTitle": "appraisal",
+      "title": "Appraisal",
+      "pageTitle": "Appraisal",
       "slug": "index",
       "headings": [
         {
@@ -40,10 +126,67 @@
           "id": "basic-usage"
         }
       ]
+    },
+    "start/tutorial.html": {
+      "source": "docs/start/tutorial.md",
+      "title": "Tutorial - Appraisal",
+      "pageTitle": "Tutorial",
+      "slug": "starttutorial",
+      "headings": [
+        {
+          "title": "Prerequisites",
+          "depth": 2,
+          "id": "prerequisites",
+          "headings": [
+            {
+              "title": "Slack",
+              "depth": 3,
+              "id": "slack"
+            },
+            {
+              "title": "Messenger",
+              "depth": 3,
+              "id": "messenger"
+            }
+          ]
+        },
+        {
+          "title": "Setup",
+          "depth": 2,
+          "id": "setup"
+        },
+        {
+          "title": "Step 0 - write a test",
+          "depth": 2,
+          "id": "step-0-write-a-test"
+        }
+      ]
+    },
+    "reference/config.html": {
+      "source": "docs/reference/config.md",
+      "title": "Configuation - Appraisal",
+      "pageTitle": "Configuation",
+      "slug": "referenceconfig"
+    },
+    "reference/api/postMessage.html": {
+      "source": "docs/reference/api/postMessage.md",
+      "title": "postMessage - Appraisal",
+      "pageTitle": "postMessage",
+      "slug": "referenceapipostmessage",
+      "headings": [
+        {
+          "title": "PostMessageOptions",
+          "depth": 3,
+          "id": "postmessageoptions"
+        }
+      ]
     }
   },
   "sources": {
     "README.md": "index.html",
+    "docs/start/tutorial.md": "start/tutorial.html",
+    "docs/reference/config.md": "reference/config.html",
+    "docs/reference/api/postMessage.md": "reference/api/postMessage.html",
     "docs/docpress.json": "docpress.json",
     "docs/assets/custom.css": "assets/custom.css"
   }
