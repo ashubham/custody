@@ -4,7 +4,7 @@
 > of naughty chatbots!
 
 E2E test framework for your conversational bot. <br>
-Supports Messenger, Slack, more ?
+Supports Messenger, Slack, more ? Bots are everywhere, and they need to behave!
 
 [![Build Status](https://travis-ci.org/ashubham/custody.svg?branch=master)](https://travis-ci.org/ashubham/custody)
 [![npm version](https://badge.fury.io/js/custody.svg)](https://badge.fury.io/js/custody)
