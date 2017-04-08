@@ -1,7 +1,7 @@
-# custody
+# Custody
 <!--{h1:.massive-header.-with-tagline}-->
 
-> Naughty chatbots, Disciplined!
+> of naughty chatbots!
 
 E2E test framework for your conversational bot. <br>
 Supports Messenger, Slack, more ?
