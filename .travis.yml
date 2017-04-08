@@ -6,7 +6,7 @@ env:
   global:
     - GIT_NAME: ashubham
     - GIT_EMAIL: ashubham@gmail.com
-    - GITHUB_REPO: ashubham/appraisal
+    - GITHUB_REPO: ashubham/custody
     - GIT_SOURCE: _docpress
 
 script:

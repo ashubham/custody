@@ -9,7 +9,7 @@ export class IError extends Error {
     stack?: string;
 }
 
-export class AppraisalError extends IError {
+export class CustodyError extends IError {
     static ERR_MSGS: string[];
     static CODE = KITCHEN_SINK_CODE;
     static SUPRESS_EXIT_CODE = false;
@@ -23,12 +23,12 @@ export class AppraisalError extends IError {
 
         // replacing the stack trace with the thrown error stack trace.
         if (error) {
-            let appraisalError = error as AppraisalError;
-            this.stack = appraisalError.stack;
+            let custodyError = error as CustodyError;
+            this.stack = custodyError.stack;
         }
-        AppraisalError.log(logger, this.code, this.message, this.stack);
+        CustodyError.log(logger, this.code, this.message, this.stack);
 
-        if (!AppraisalError.SUPRESS_EXIT_CODE) {
+        if (!CustodyError.SUPRESS_EXIT_CODE) {
             process.exit(this.code);
         }
     }
@@ -47,7 +47,7 @@ export class AppraisalError extends IError {
 /**
  * Configuration file error
  */
-export class ConfigError extends AppraisalError {
+export class ConfigError extends CustodyError {
     static CODE = CONFIG_ERROR_CODE;
     constructor(logger: Logger, message: string, error?: Error) {
         super(logger, message, ConfigError.CODE, error);
@@ -57,7 +57,7 @@ export class ConfigError extends AppraisalError {
 /**
  * API errors including network, etc.
  */
-export class APIError extends AppraisalError {
+export class APIError extends CustodyError {
     static CODE = API_ERROR_CODE;
     static ERR_MSGS = [
         'ECONNREFUSED connect ECONNREFUSED', '500 Internal Server Error',

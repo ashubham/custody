@@ -13,7 +13,7 @@ exports.config = {
     framework: 'jasmine',
 
     // Spec patterns are relative to the current working directory when
-    // protractor is called.
+    // custody is called.
     specs: ['example.test.js'],
 
     // Options to be passed to Jasmine.

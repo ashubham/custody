@@ -3,7 +3,7 @@ import * as optimist from 'optimist';
 import * as path from 'path';
 
 /**
- * The command line interface for interacting with the Appraisal runner.
+ * The command line interface for interacting with the Custody runner.
  * It takes care of parsing command line options.
  *
  * Values from command line options override values from the config.
@@ -34,8 +34,8 @@ let allowedNames = [
 
 let optimistOptions: any = {
     describes: {
-        help: 'Print Appraisal help menu',
-        version: 'Print Appraisal version',
+        help: 'Print Custody help menu',
+        version: 'Print Custody version',
         platform: 'Platform, e.g. slack or messenger',
         token: 'API token',
         email: 'User email to send messages as (Messenger only)',
@@ -59,8 +59,8 @@ let optimistOptions: any = {
 };
 
 optimist.usage(
-    'Usage: appraisal [configFile] [options]\n' +
-    'configFile defaults to appraisal.conf.js\n' +
+    'Usage: custody [configFile] [options]\n' +
+    'configFile defaults to custody.conf.js\n' +
     'The [options] object will override values from the config file.\n' +
     'See the reference config for a full list of options.');
 for (let key of Object.keys(optimistOptions.describes)) {
@@ -115,8 +115,8 @@ if (argv.exclude) {
 // Use default configuration, if it exists.
 let configFile: string = argv._[0];
 if (!configFile) {
-    if (fs.existsSync('./appraisal.conf.js')) {
-        configFile = './appraisal.conf.js';
+    if (fs.existsSync('./custody.conf.js')) {
+        configFile = './custody.conf.js';
     }
 }
 

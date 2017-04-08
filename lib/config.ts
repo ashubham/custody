@@ -37,25 +37,25 @@ export interface Config {
      * You can specify a file containing code to run by setting beforeLaunch to
      * the filename string.
      *
-     * At this point, global variable 'protractor' object will NOT be set up,
+     * At this point, global variable 'custody' object will NOT be set up,
      * and globals from the test framework will NOT be available. The main
      * purpose of this function should be to bring up test dependencies.
      */
     beforeLaunch?: () => void;
 
     /**
-     * A callback function called once protractor is ready and available, and
+     * A callback function called once custody is ready and available, and
      * before the specs are executed. If multiple capabilities are being run,
      * this will run once per capability.
      *
      * You can specify a file containing code to run by setting onPrepare to
      * the filename string. onPrepare can optionally return a promise, which
-     * Protractor will wait for before continuing execution. This can be used if
+     * Custody will wait for before continuing execution. This can be used if
      * the preparation involves any asynchronous calls, e.g. interacting with
-     * the browser. Otherwise Protractor cannot guarantee order of execution
+     * the browser. Otherwise Custody cannot guarantee order of execution
      * and may start the tests before preparation finishes.
      *
-     * At this point, global variable 'protractor' object will be set up, and
+     * At this point, global variable 'custody' object will be set up, and
      * globals from the test framework will be available. For example, if you
      * are using Jasmine, you can add a reporter with:
      *
@@ -75,7 +75,7 @@ export interface Config {
 
     /**
      * A callback function called once tests are finished. onComplete can
-     * optionally return a promise, which Protractor will wait for before
+     * optionally return a promise, which Custody will wait for before
      * shutting down webdriver.
      *
      * At this point, tests will be done but global objects will still be

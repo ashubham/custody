@@ -54,7 +54,7 @@ RunnerReporter.prototype.specDone = function (result) {
 /**
  * Execute the Runner's test cases through Jasmine.
  *
- * @param {Runner} runner The current Appraisal Runner.
+ * @param {Runner} runner The current Custody Runner.
  * @param {Array} specs Array of Directory Path Strings.
  * @return {q.Promise} Promise resolved with the test results
  */

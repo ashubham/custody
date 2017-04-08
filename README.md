@@ -6,26 +6,26 @@
 E2E test framework for your conversational bot. <br>
 Supports Messenger, Slack, more ?
 
-[![Build Status](https://travis-ci.org/ashubham/appraisal.svg?branch=master)](https://travis-ci.org/ashubham/appraisal)
-[![npm version](https://badge.fury.io/js/appraisal.svg)](https://badge.fury.io/js/appraisal)
-[![Coverage Status](https://coveralls.io/repos/github/ashubham/appraisal/badge.svg?branch=master)](https://coveralls.io/github/ashubham/appraisal?branch=master)
+[![Build Status](https://travis-ci.org/ashubham/custody.svg?branch=master)](https://travis-ci.org/ashubham/custody)
+[![npm version](https://badge.fury.io/js/custody.svg)](https://badge.fury.io/js/custody)
+[![Coverage Status](https://coveralls.io/repos/github/ashubham/custody/badge.svg?branch=master)](https://coveralls.io/github/ashubham/custody?branch=master)
 [![Dependency status](http://img.shields.io/david/docpress/docpress.svg?style=flat-square)](https://david-dm.org/docpress/docpress)
 [![Dev Dependencies Status](http://img.shields.io/david/dev/docpress/docpress.svg?style=flat-square)](https://david-dm.org/docpress/docpress#info=devDependencies)
 
 ## Getting Started
 -------------------
 
-Visit [Appraisal Website](http://ashubham.github.io/appraisal) for all documentation.
+Visit [Custody Website](http://ashubham.github.io/custody) for all documentation.
 
 For a quick setup and run:
- - Follow the [Tutorial](http://ashubham.github.io/appraisal/tutorial.html)
- - [API Reference](http://ashubham.github.io/appraisal/api.html)
+ - Follow the [Tutorial](http://ashubham.github.io/custody/tutorial.html)
+ - [API Reference](http://ashubham.github.io/custody/api.html)
 
  ## Basic Usage
 
-`$ npm i -g appraisal`
+`$ npm i -g custody`
 
-`$ appraisal --platform=slack --framework=jasmine --token=xoxp-123-123 
+`$ custody --platform=slack --framework=jasmine --token=xoxp-123-123 
     --specs=test/**/* --defaultRecipient=C928721`
 
 ```javascript

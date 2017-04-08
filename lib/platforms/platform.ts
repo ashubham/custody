@@ -1,6 +1,6 @@
 import { Message, MessageTypes } from './message';
 import { Logger } from './../logger';
-import * as jsondiffpatch from 'jsondiffpatch';
+import diff from '../diff';
 import * as q from 'q';
 let logger = new Logger('Platform');
 export enum GroupTypes {
@@ -52,7 +52,7 @@ export class Platform {
         skipNormalize?: boolean) : any {
         let normalizedSrc = this.normalize(src, additionalNormalizer);
         target = this.normalizeTarget(target);
-        return jsondiffpatch.diff(normalizedSrc, target);
+        return diff.diff(normalizedSrc, target);
     }
 
     getMessageType(message): MessageTypes {

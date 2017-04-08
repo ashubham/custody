@@ -3,7 +3,7 @@ import * as q from 'q';
 
 import { Config } from './config';
 import { ConfigParser } from './configParser';
-import { ConfigError, ErrorHandler, AppraisalError } from './exitCodes';
+import { ConfigError, ErrorHandler, CustodyError } from './exitCodes';
 import { Logger } from './logger';
 import { Runner } from './runner';
 import { TaskResults } from './taskResults';
@@ -19,13 +19,13 @@ process.on('uncaughtException', (exc: (Error | string)) => {
 
     let errorCode = ErrorHandler.parseError(e);
     if (errorCode) {
-        let appraisalError = e as AppraisalError;
-        AppraisalError.log(logger, errorCode, appraisalError.message, appraisalError.stack);
+        let custodyError = e as CustodyError;
+        CustodyError.log(logger, errorCode, custodyError.message, custodyError.stack);
         process.exit(errorCode);
     } else {
         logger.error(e.message);
         logger.error(e.stack);
-        process.exit(AppraisalError.CODE);
+        process.exit(CustodyError.CODE);
     }
 });
 
@@ -73,7 +73,7 @@ let initFn = function (configFile: string, additionalConfig: Config) {
     let config = configParser.getConfig();
     Logger.set(config);
     logger.debug('Running with --troubleshoot');
-    logger.debug('Appraisal version: ' + require('../package.json').version);
+    logger.debug('Custody version: ' + require('../package.json').version);
 
     // Run beforeLaunch
     util.runFilenameOrFn_(config.configDir, config.beforeLaunch)

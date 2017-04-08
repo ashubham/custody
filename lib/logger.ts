@@ -33,7 +33,7 @@ export enum WriteTo {
     NONE
 }
 
-let logFile = 'appraisal.log';  // the default log file name
+let logFile = 'custody.log';  // the default log file name
 
 /**
  * Logger class adds timestamp output, log levels, and identifiers to help
@@ -48,8 +48,8 @@ export class Logger {
     static firstWrite: boolean = false;
 
     /**
-     * Set up the logging configuration from the appraisal configuration file.
-     * @param config The appraisal configuration
+     * Set up the logging configuration from the custody configuration file.
+     * @param config The custody configuration
      */
     static set(config: Config): void {
         if (config.troubleshoot) {

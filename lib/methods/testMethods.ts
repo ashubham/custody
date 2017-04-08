@@ -4,7 +4,7 @@ import { PostMessageOptions } from './testMethods';
 import { Message, MessageTypes } from './../platforms/message';
 import { Config } from './../config';
 import { Platform } from '../platforms/platform';
-import * as jsondiffpatch from 'jsondiffpatch';
+import diff from '../diff';
 import * as q from 'q';
 import * as path from 'path';
 import callerPath = require('caller-path');
@@ -52,7 +52,7 @@ export interface WaitForResponseOptions {
      * @memberOf WaitForResponseOptions
      */
     reciever?: string;
-    additionalNormalizer?: (msg: any) => any;
+    normalizer?: (msg: any) => any;
     timeout?: number;
     skipNormalization?: boolean;
 }
@@ -105,13 +105,16 @@ export class TestMethods {
     }    
 
     @flowify    
-    sleep(time: number) {
+    sleep(time: number = 0) {
         return q.delay(time);
     }
 
     @flowify
-    getLastMessage(reciever?: string): PromiseLike<Message> {
-        return this.platform.getLastMessage(reciever);
+    getLastMessage(onlyString: boolean = false, reciever?: string): PromiseLike<Message|string> {
+        return this.platform.getLastMessage(reciever)
+            .then((msg: Message) => {
+                return (onlyString) ? msg.text : msg;
+            });
     }
 
     @flowify    
@@ -124,7 +127,7 @@ export class TestMethods {
                         latestDelta = this.platform.compare(
                             message.payload,
                             target,
-                            opts.additionalNormalizer,
+                            opts.normalizer,
                             opts.skipNormalization
                         );
                         //console.log(latestDelta, message);
@@ -136,19 +139,21 @@ export class TestMethods {
         }, `Response match ${JSON.stringify(target)}`, opts.timeout).then(null, (err) => {
             _logger.error(`FAILED\n`, latestDelta);
             if (latestDelta) {
-                jsondiffpatch.console.log(latestDelta);
+                diff.console.log(latestDelta);
             }
             return q.reject(err);
         });
     }
 
-    waitForFileShare(reciever?: string) {
+    waitForFileShare(reciever?: string, timeout?: number) {
         return wait(() => {
             return this.platform.getLastMessage(reciever).
                 then((message) => {
-                    return message.type === MessageTypes.FILE_SHARE;
+                    if (message.type === MessageTypes.FILE_SHARE) {
+                        return message;
+                    }
                 });
-        }, 'File Upload');
+        }, 'File Upload', timeout);
     }
 
 
