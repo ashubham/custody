@@ -2,7 +2,7 @@
   "toc": {
     "sections": [
       {
-        "title": "Appraisal",
+        "title": "Custody",
         "source": "README.md",
         "url": "index.html",
         "slug": "index",
@@ -81,26 +81,112 @@
                     "title": "PostMessageOptions",
                     "depth": 3,
                     "id": "postmessageoptions"
+                  },
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
                   }
                 ]
               },
               {
-                "title": "uploadFile"
+                "title": "uploadFile",
+                "source": "docs/reference/api/uploadFile.md",
+                "url": "reference/api/uploadFile.html",
+                "slug": "referenceapiuploadfile",
+                "headings": [
+                  {
+                    "title": "UploadFileOptions",
+                    "depth": 3,
+                    "id": "uploadfileoptions"
+                  },
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
+                  }
+                ]
               },
               {
-                "title": "sleep"
+                "title": "sleep",
+                "source": "docs/reference/api/sleep.md",
+                "url": "reference/api/sleep.html",
+                "slug": "referenceapisleep",
+                "headings": [
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
+                  }
+                ]
               },
               {
-                "title": "getLastMessage"
+                "title": "getLastMessage",
+                "source": "docs/reference/api/getLastMessage.md",
+                "url": "reference/api/getLastMessage.html",
+                "slug": "referenceapigetlastmessage",
+                "headings": [
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
+                  }
+                ]
               },
               {
-                "title": "waitForResponseToBe"
+                "title": "waitForResponseToBe",
+                "source": "docs/reference/api/waitResponse.md",
+                "url": "reference/api/waitResponse.html",
+                "slug": "referenceapiwaitresponse",
+                "headings": [
+                  {
+                    "title": "WaitForResponseOptions",
+                    "depth": 3,
+                    "id": "waitforresponseoptions"
+                  },
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
+                  }
+                ]
               },
               {
-                "title": "waitForFileShare"
+                "title": "waitForFileShare",
+                "source": "docs/reference/api/waitFile.md",
+                "url": "reference/api/waitFile.html",
+                "slug": "referenceapiwaitfile",
+                "headings": [
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
+                  }
+                ]
               },
               {
-                "title": "wait"
+                "title": "wait",
+                "source": "docs/reference/api/wait.md",
+                "url": "reference/api/wait.html",
+                "slug": "referenceapiwait",
+                "headings": [
+                  {
+                    "title": "Returns",
+                    "depth": 3,
+                    "id": "returns"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "title": "How it works",
+            "sections": [
+              {
+                "title": "Normalization",
+                "source": "docs/reference/how/normalization.md",
+                "url": "reference/how/normalization.html",
+                "slug": "referencehownormalization"
               }
             ]
           }
@@ -111,8 +197,8 @@
   "index": {
     "index.html": {
       "source": "README.md",
-      "title": "Appraisal",
-      "pageTitle": "Appraisal",
+      "title": "Custody",
+      "pageTitle": "Custody",
       "slug": "index",
       "headings": [
         {
@@ -129,7 +215,7 @@
     },
     "start/tutorial.html": {
       "source": "docs/start/tutorial.md",
-      "title": "Tutorial - Appraisal",
+      "title": "Tutorial - Custody",
       "pageTitle": "Tutorial",
       "slug": "starttutorial",
       "headings": [
@@ -164,13 +250,13 @@
     },
     "reference/config.html": {
       "source": "docs/reference/config.md",
-      "title": "Configuation - Appraisal",
+      "title": "Configuation - Custody",
       "pageTitle": "Configuation",
       "slug": "referenceconfig"
     },
     "reference/api/postMessage.html": {
       "source": "docs/reference/api/postMessage.md",
-      "title": "postMessage - Appraisal",
+      "title": "postMessage - Custody",
       "pageTitle": "postMessage",
       "slug": "referenceapipostmessage",
       "headings": [
@@ -178,8 +264,107 @@
           "title": "PostMessageOptions",
           "depth": 3,
           "id": "postmessageoptions"
+        },
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
         }
       ]
+    },
+    "reference/api/uploadFile.html": {
+      "source": "docs/reference/api/uploadFile.md",
+      "title": "uploadFile - Custody",
+      "pageTitle": "uploadFile",
+      "slug": "referenceapiuploadfile",
+      "headings": [
+        {
+          "title": "UploadFileOptions",
+          "depth": 3,
+          "id": "uploadfileoptions"
+        },
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
+        }
+      ]
+    },
+    "reference/api/sleep.html": {
+      "source": "docs/reference/api/sleep.md",
+      "title": "sleep - Custody",
+      "pageTitle": "sleep",
+      "slug": "referenceapisleep",
+      "headings": [
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
+        }
+      ]
+    },
+    "reference/api/getLastMessage.html": {
+      "source": "docs/reference/api/getLastMessage.md",
+      "title": "getLastMessage - Custody",
+      "pageTitle": "getLastMessage",
+      "slug": "referenceapigetlastmessage",
+      "headings": [
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
+        }
+      ]
+    },
+    "reference/api/waitResponse.html": {
+      "source": "docs/reference/api/waitResponse.md",
+      "title": "waitForResponseToBe - Custody",
+      "pageTitle": "waitForResponseToBe",
+      "slug": "referenceapiwaitresponse",
+      "headings": [
+        {
+          "title": "WaitForResponseOptions",
+          "depth": 3,
+          "id": "waitforresponseoptions"
+        },
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
+        }
+      ]
+    },
+    "reference/api/waitFile.html": {
+      "source": "docs/reference/api/waitFile.md",
+      "title": "waitForFileShare - Custody",
+      "pageTitle": "waitForFileShare",
+      "slug": "referenceapiwaitfile",
+      "headings": [
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
+        }
+      ]
+    },
+    "reference/api/wait.html": {
+      "source": "docs/reference/api/wait.md",
+      "title": "wait - Custody",
+      "pageTitle": "wait",
+      "slug": "referenceapiwait",
+      "headings": [
+        {
+          "title": "Returns",
+          "depth": 3,
+          "id": "returns"
+        }
+      ]
+    },
+    "reference/how/normalization.html": {
+      "source": "docs/reference/how/normalization.md",
+      "title": "Normalization - Custody",
+      "pageTitle": "Normalization",
+      "slug": "referencehownormalization"
     }
   },
   "sources": {
@@ -187,6 +372,13 @@
     "docs/start/tutorial.md": "start/tutorial.html",
     "docs/reference/config.md": "reference/config.html",
     "docs/reference/api/postMessage.md": "reference/api/postMessage.html",
+    "docs/reference/api/uploadFile.md": "reference/api/uploadFile.html",
+    "docs/reference/api/sleep.md": "reference/api/sleep.html",
+    "docs/reference/api/getLastMessage.md": "reference/api/getLastMessage.html",
+    "docs/reference/api/waitResponse.md": "reference/api/waitResponse.html",
+    "docs/reference/api/waitFile.md": "reference/api/waitFile.html",
+    "docs/reference/api/wait.md": "reference/api/wait.html",
+    "docs/reference/how/normalization.md": "reference/how/normalization.html",
     "docs/docpress.json": "docpress.json",
     "docs/assets/custom.css": "assets/custom.css"
   }

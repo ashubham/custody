@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://ricostacruz.com/docpress-rsc/style.css">
     <link rel="stylesheet" href="../../assets/custom.css?t=31384f59">
     <script src="../../assets/script.js?t=42463e55"></script>
-    <title>postMessage - Custody</title>
+    <title>wait - Custody</title>
     <meta name="viewport" content="width=device-width">
   </head>
   <body class="-menu-visible">
@@ -29,13 +29,7 @@
                 </li>
                 <li class="menu-item -level-2 -parent"><span class="title">API Reference</span>
                   <ul class="submenu">
-                    <li class="menu-item -level-3"><a class="link title -active link-referenceapipostmessage" href="../../reference/api/postMessage.html">postMessage</a>
-                      <ul class="headings heading-list">
-                        <li class="heading-item -depth-3"><a class="hlink link-postmessageoptions" href="#postmessageoptions">PostMessageOptions</a>
-                        </li>
-                        <li class="heading-item -depth-3"><a class="hlink link-returns" href="#returns">Returns</a>
-                        </li>
-                      </ul>
+                    <li class="menu-item -level-3"><a class="link title  link-referenceapipostmessage" href="../../reference/api/postMessage.html">postMessage</a>
                     </li>
                     <li class="menu-item -level-3"><a class="link title  link-referenceapiuploadfile" href="../../reference/api/uploadFile.html">uploadFile</a>
                     </li>
@@ -47,7 +41,11 @@
                     </li>
                     <li class="menu-item -level-3"><a class="link title  link-referenceapiwaitfile" href="../../reference/api/waitFile.html">waitForFileShare</a>
                     </li>
-                    <li class="menu-item -level-3"><a class="link title  link-referenceapiwait" href="../../reference/api/wait.html">wait</a>
+                    <li class="menu-item -level-3"><a class="link title -active link-referenceapiwait" href="../../reference/api/wait.html">wait</a>
+                      <ul class="headings heading-list">
+                        <li class="heading-item -depth-3"><a class="hlink link-returns" href="#returns">Returns</a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </li>
@@ -62,23 +60,20 @@
           </ul>
         </li>
       </div>
-      <div class="body page-referenceapipostmessage">
+      <div class="body page-referenceapiwait">
         <div class="header-nav">
           <div class="right"><a class="iconlink" href="https://github.com/ashubham/custody" data-title="ashubham/custody">
               <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
           </div>
         </div>
-        <div class="markdown-body"><h1 id="csty.postmessage">csty.postMessage</h1>
-<p>Posts a message to the specified/default reciever.</p>
-<p>This methods waits for a response from the reciever, it blocks Custody&#x2019;s control flow, not the javascript runtime. It will only delay future custody commands from being executed (e.g. it will cause Custody to wait before sending future commands to the chat platform). This
-behaviour can be turned off by setting <code>skipWait: true</code> in the options.</p>
-<p>Example</p>
-<pre><code class="lang-js">csty.postMessage(<span class="pl-s">&apos;Test Message!&apos;</span>); <span class="pl-c">// Posts &apos;Test Message&apos; to default Reciever.</span>
-
-csty.postMessage(<span class="pl-s">&apos;Hello&apos;</span>, {
-    <span class="hljs-attr">skipWait</span>: <span class="pl-c1">false</span>, <span class="pl-c">// Do not wait for a response before continuing.</span>
-    reciever: <span class="pl-s">&apos;U192929&apos;</span> <span class="pl-c">// Send message to this user, instead of default.</span>
-});
+        <div class="markdown-body"><h1 id="csty.wait">csty.wait</h1>
+<p>Schedules a command to wait for a condition to hold or promise to be resolved.</p>
+<p>This function blocks Custody&#x2019;s control flow, not the javascript runtime. It will only delay future custody commands from being executed (e.g. it will cause Custody to wait before sending future commands to the chat platform).</p>
+<p>This function returnes a promise, which can be used if you need to block javascript execution and not just the control flow.</p>
+<p>Example: Suppose you have a function, startTestServer, that returns a promise for when a server is ready for requests. You can block a Custody client on this promise with:</p>
+<pre><code class="lang-js"><span class="pl-k">var</span> started = startTestServer();
+csty.wait(started, <span class="pl-s">&apos;Server should start within 5 seconds&apos;</span>, <span class="hljs-number">5</span> * <span class="hljs-number">1000</span>);
+csty.postMessage(<span class="pl-s">&apos;Are you up?&apos;</span>);
 </code></pre>
 <table>
 <thead>
@@ -91,47 +86,22 @@ csty.postMessage(<span class="pl-s">&apos;Hello&apos;</span>, {
 </thead>
 <tbody>
 <tr>
-<td>message</td>
+<td>condition</td>
+<td style="text-align:center">Promise<t></t></td>
+<td style="text-align:center">function(): T</td>
+<td></td>
+</tr>
+<tr>
+<td>opt_message</td>
 <td style="text-align:center">string</td>
 <td style="text-align:center">&#x2018;&#x2019;</td>
-<td>The text message to send</td>
+<td>An optional message to use to denote waiting.</td>
 </tr>
 <tr>
-<td>opts</td>
-<td style="text-align:center"><a href="#postMesgOpts">PostMessageOptions</a></td>
-<td style="text-align:center"></td>
-<td>options</td>
-</tr>
-</tbody>
-</table>
-<h3 id="postmessageoptions">PostMessageOptions</h3>
-<table>
-<thead>
-<tr>
-<th>key</th>
-<th style="text-align:center">Type</th>
-<th style="text-align:center">Default</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>skipWait</td>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">false</td>
-<td>Do not wait for any response</td>
-</tr>
-<tr>
-<td>skipMention</td>
-<td style="text-align:center">boolean</td>
-<td style="text-align:center">false</td>
-<td>Do not callout the bot/reciver</td>
-</tr>
-<tr>
-<td>reciever</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">config.defaultReciever</td>
-<td>The reciever id</td>
+<td>opt_timeout</td>
+<td style="text-align:center">number</td>
+<td style="text-align:center">config.defaultTimeout</td>
+<td>How long to wait for the condition to be true.</td>
 </tr>
 </tbody>
 </table>
@@ -145,16 +115,16 @@ csty.postMessage(<span class="pl-s">&apos;Hello&apos;</span>, {
 </thead>
 <tbody>
 <tr>
-<td>Promise&lt;Message&gt;</td>
-<td style="text-align:left">A promise that will be fulfilled with the message recieved as confirmation from the platform.</td>
+<td>Promise&lt;T&gt;</td>
+<td style="text-align:left">A promise that will be fulfilled with the first truthy value returned by the condition function, or rejected if the condition times out.</td>
 </tr>
 </tbody>
 </table>
 
         </div>
         <div class="footer-nav">
-          <div class="left"><a href="../../reference/config.html"><span class="title">Configuation</span></a></div>
-          <div class="right"><a href="../../reference/api/uploadFile.html"><span class="label">Next: </span><span class="title">uploadFile</span></a></div>
+          <div class="left"><a href="../../reference/api/waitFile.html"><span class="title">waitForFileShare</span></a></div>
+          <div class="right"><a href="../../reference/how/normalization.html"><span class="label">Next: </span><span class="title">Normalization</span></a></div>
         </div>
       </div>
     </div>
