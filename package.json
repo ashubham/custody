@@ -1,6 +1,6 @@
 {
   "name": "custody",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "e2e testing for chatbots",
   "main": "index.js",
   "scripts": {

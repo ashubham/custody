@@ -1,7 +1,10 @@
 # Custody
 <!--{h1:.massive-header.-with-tagline}-->
-
 > of naughty chatbots!
+
+<a href="http://ashubham.github.io/custody">
+    <img class="logo" src="https://raw.githubusercontent.com/ashubham/custody/master/img/handcuffs.png" align="right" height="80px" alt="Custody logo" />
+</a>
 
 E2E test framework for your conversational bot. <br>
 Supports Messenger, Slack, more ? Bots are everywhere, and they need to behave!
@@ -22,6 +25,7 @@ For a quick setup and run:
  - [API Reference](http://ashubham.github.io/custody/api.html)
 
  ## Basic Usage
+ -------------------
 
 `$ npm i -g custody`
 
