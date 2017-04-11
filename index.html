@@ -97,9 +97,9 @@ Supports Messenger, Slack, more ? Bots are everywhere, and they need to behave!<
 <pre><code class="lang-javascript"><span class="pl-c">// test/sample.tests.js</span>
 describe(<span class="pl-s">&apos;This is a sample test&apos;</span>, () =&gt; {
     it(<span class="pl-s">&apos;Sample test 1&apos;</span>, () =&gt; {
-        app.postMessage(<span class="pl-s">&apos;Hello?&apos;</span>);
-        app.waitForResponseToBe(<span class="pl-s">&apos;World!&apos;</span>);
-        expect(app.getLastMessage()).toEqual(
+        csty.postMessage(<span class="pl-s">&apos;Hello?&apos;</span>);
+        csty.waitForResponseToBe(<span class="pl-s">&apos;World!&apos;</span>);
+        expect(csty.getLastMessage()).toEqual(
             jasmine.objectContaining({
                 <span class="hljs-attr">payload</span>: {
                     <span class="hljs-attr">body</span>: <span class="pl-s">&apos;World!&apos;</span>
