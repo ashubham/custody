@@ -6,6 +6,8 @@ var spawn = require('child_process').spawn;
 var spawnSync = require('child_process').spawnSync;
 var tslint = require('gulp-tslint');
 var eslint = require('gulp-eslint');
+var tar = require('gulp-tar');
+var gzip = require('gulp-gzip');
 var fs = require('fs');
 var path = require('path');
 var glob = require('glob');
@@ -66,8 +68,25 @@ gulp.task('compile_to_es5', function (done) {
     runSequence('tsc:es5', 'built:copy', done);
 });
 
-gulp.task('prepublish', function (done) {
+gulp.task('build', function (done) {
     runSequence( 'lint', 'tsc', 'built:copy', done);
 });
 
-gulp.task('default', ['prepublish']);
+gulp.task('dist', function () {
+    gulp.src([
+        'bin/**',
+        'built/**',
+        'examples/**',
+        'package.json',
+        'LICENSE'
+    ], { base: '..' })
+        .pipe(tar('release.tar'))
+        .pipe(gzip())
+        .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('prepublish', function (done) {
+    runSequence('build', 'dist', done);
+});
+
+gulp.task('default', ['build']);
