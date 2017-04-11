@@ -73,9 +73,9 @@
 <p>This methods waits for a response from the reciever, this
 behaviour can be turned off by setting <code>skipWait: true</code> in the options.</p>
 <p>Example</p>
-<pre><code class="lang-js">csty.uploadFile(<span class="pl-s">&apos;./images/me.png&apos;</span>); <span class="pl-c">// Uploads &apos;me.png&apos; to default Reciever.</span>
+<pre><code class="lang-js">csty.uploadFile(__dirname + <span class="pl-s">&apos;/images/me.png&apos;</span>); <span class="pl-c">// Uploads &apos;me.png&apos; to default Reciever.</span>
 
-csty.postMessage(<span class="pl-s">&apos;./images/me.png&apos;</span>, { 
+csty.postMessage(__dirname + <span class="pl-s">&apos;/images/me.png&apos;</span>, { 
     <span class="hljs-attr">skipWait</span>: <span class="pl-c1">false</span>, <span class="pl-c">// Do not wait for a response before continuing.</span>
     reciever: <span class="pl-s">&apos;U192929&apos;</span> <span class="pl-c">// Send file to this user, instead of default.</span>
 });
@@ -94,7 +94,7 @@ csty.postMessage(<span class="pl-s">&apos;./images/me.png&apos;</span>, {
 <td>path</td>
 <td style="text-align:center">string</td>
 <td style="text-align:center">&#x2018;&#x2019;</td>
-<td>Path to the file, relative to the script cwd.</td>
+<td>Absolute Path to the file.</td>
 </tr>
 <tr>
 <td>opts</td>
