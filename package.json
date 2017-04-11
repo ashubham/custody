@@ -1,6 +1,6 @@
 {
   "name": "custody",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "e2e testing for chatbots",
   "scripts": {
     "build": "gulp",

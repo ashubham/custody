@@ -24,6 +24,7 @@ For a quick setup and run:
  - Follow the [Tutorial](http://ashubham.github.io/custody/tutorial.html)
  - [API Reference](http://ashubham.github.io/custody/api.html)
 
+
  ## Basic Usage
  -------------------
 
@@ -36,9 +37,9 @@ For a quick setup and run:
 // test/sample.tests.js
 describe('This is a sample test', () => {
     it('Sample test 1', () => {
-        app.postMessage('Hello?');
-        app.waitForResponseToBe('World!');
-        expect(app.getLastMessage()).toEqual(
+        csty.postMessage('Hello?');
+        csty.waitForResponseToBe('World!');
+        expect(csty.getLastMessage()).toEqual(
             jasmine.objectContaining({
                 payload: {
                     body: 'World!'
