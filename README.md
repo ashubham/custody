@@ -22,7 +22,7 @@ Visit [Custody Website](http://ashubham.github.io/custody) for all documentation
 
 For a quick setup and run:
  - Follow the [Tutorial](http://ashubham.github.io/custody/tutorial.html)
- - [API Reference](http://ashubham.github.io/custody/api.html)
+ - [API Reference](https://ashubham.github.io/custody/reference/api/postMessage.html)
 
 
  ## Basic Usage
