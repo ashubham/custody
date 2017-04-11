@@ -37,7 +37,7 @@ For a quick setup and run:
 describe('This is a sample test', () => {
     it('Sample test 1', () => {
         app.postMessage('Hello?');
-        app.waitForResponseToMatch('World!');
+        app.waitForResponseToBe('World!');
         expect(app.getLastMessage()).toEqual(
             jasmine.objectContaining({
                 payload: {
