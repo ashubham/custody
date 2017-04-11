@@ -4,7 +4,8 @@
   "description": "e2e testing for chatbots",
   "scripts": {
     "build": "gulp",
-    "test": "npm run build && istanbul cover jasmine && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "unit-test": "NODE_ENV=test mocha --recursive --compilers ts:ts-node/register --bail 'test/**/*.ts'",
+    "test": "nyc npm run unit-test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "prepublishOnly": "gulp prepublish"
   },
   "repository": {
@@ -35,6 +36,7 @@
     "@types/node": "^7.0.12",
     "@types/optimist": "0.0.29",
     "@types/q": "^1.0.0",
+    "chai": "^3.5.0",
     "coveralls": "^2.13.0",
     "docpress": "^0.7.1",
     "eslint": "^3.18.0",
@@ -47,7 +49,9 @@
     "istanbul": "^0.4.5",
     "jshint": "^2.9.4",
     "markdown-it-decorate": "^1.2.2",
+    "nyc": "^10.2.0",
     "run-sequence": "^1.2.2",
+    "sinon": "^2.1.0",
     "tslint": "^5.0.0",
     "tslint-eslint-rules": "^3.5.1",
     "typescript": "^2.2.2",

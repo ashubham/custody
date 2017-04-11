@@ -84,6 +84,7 @@ export class Slack extends Platform {
             channels: reciever
         });
     }
+    
     getLastMessage(
         channel: string = this.defaultRecipient
     ): PromiseLike<SlackMessage> {
