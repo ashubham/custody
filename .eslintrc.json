@@ -11,7 +11,7 @@
         "expect": false,
         "it": false,
         "describe": false,
-        "app": false,
+        "csty": false,
         "jasmine": false
     },
     "rules": {

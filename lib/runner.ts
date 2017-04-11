@@ -121,7 +121,7 @@ export class Runner extends EventEmitter {
         if (this.config_.botId) {
             platform.defaultMention = this.config_.botId;
         }
-        global.app = testMethods;
+        global.csty = testMethods;
     }
 
     run(): q.Promise<any> {

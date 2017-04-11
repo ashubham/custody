@@ -7,16 +7,16 @@ behaviour can be turned off by setting `skipWait: true` in the options.
 
 Example
 ```js
-csty.uploadFile('./images/me.png'); // Uploads 'me.png' to default Reciever.
+csty.uploadFile(__dirname + '/images/me.png'); // Uploads 'me.png' to default Reciever.
 
-csty.postMessage('./images/me.png', { 
+csty.postMessage(__dirname + '/images/me.png', { 
     skipWait: false, // Do not wait for a response before continuing.
     reciever: 'U192929' // Send file to this user, instead of default.
 });
 ```
 | Param | Type | Default | Description |
 |-------|:-----:|:------:|--------|
-|path| string | '' | Path to the file, relative to the script cwd. |
+|path| string | '' | Absolute Path to the file. |
 | opts | [UploadFileOptions](#uploadFileOpts) | | options |
 
 ### UploadFileOptions

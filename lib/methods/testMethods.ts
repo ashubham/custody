@@ -91,9 +91,7 @@ export class TestMethods {
     }
 
     @flowify
-    uploadFile(filepath: string, opts: UploadFileOptions = {}) {
-        let callerDir = path.dirname(callerPath());
-        let absPath = path.resolve(callerDir, filepath);
+    uploadFile(absPath: string, opts: UploadFileOptions = {}) {
         if (opts.skipWait) {
             return this.platform.uploadFile(absPath, opts.comment, opts.reciever);
         }
