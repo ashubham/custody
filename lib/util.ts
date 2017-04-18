@@ -1,5 +1,5 @@
+import { defer, Promise, when } from 'q';
 import { resolve } from 'path';
-import { Promise, when, defer } from 'q';
 
 /**
  * Internal helper for abstraction of polymorphic filenameOrFn properties.
@@ -10,7 +10,7 @@ import { Promise, when, defer } from 'q';
 export function runFilenameOrFn_(configDir: string, filenameOrFn: any, args?: any[]): Promise<any> {
     return Promise((resolvePromise) => {
         if (filenameOrFn && !(typeof filenameOrFn === 'string' || typeof filenameOrFn === 'function')) {
-            throw new Error('filenameOrFn must be a string or function');
+            throw new Error('filenameOrFn must be a file path or function');
         }
 
         if (typeof filenameOrFn === 'string') {

@@ -11,16 +11,73 @@ export let platformNameToPlatform = {
 
 export interface Config {
     [key: string]: any;
+    /**
+     * The platform to test the bot on. Currently supports Facebook/Slack.
+     * 
+     * @type {SupportedPlatforms}
+     * @memberOf Config
+     */
     platform?: SupportedPlatforms;
+    /**
+     * The auth token to be used to test slack.
+     * 
+     * @type {string}
+     * @memberOf Config
+     */
     token?: string;
+    /**
+     * Required. Spec patterns are relative to the location of this config.
+     *
+     * Example:
+     * specs: [
+     *   'spec/*_spec.js'
+     * ]
+     */
     specs?: string[];
+    /**
+     * Patterns to exclude specs.
+     */
     exclude?: string[];
+    /**
+     * The params object will be passed directly to the Custody instance,
+     * and can be accessed from your test as csty.params. It is an arbitrary
+     * object and can contain anything you may need in your test.
+     * This can be changed via the command line as:
+     *   --params.login.user "Joe"
+     *
+     * Example:
+     * params: {
+     *   login: {
+     *     user: 'Jane',
+     *     password: '1234'
+     *   }
+     * }
+     */
     params?: any;
+    /**
+     * A map of substitutions to be made on the messages sent.
+     * 
+     * @type {{
+     *         [key: string]: string
+     *     }}
+     * @memberOf Config
+     */
     substitutions?: {
         [key: string]: string
     };
+    /**
+     * The identifier for the default recipient of any message sent from the test.
+     * 
+     * @type {string}
+     * @memberOf Config
+     */
     defaultRecipient?: string;
-    framework?: string;
+    /**
+     * The id of the bot to be tested. This is used for call outs.
+     * 
+     * @type {string}
+     * @memberOf Config
+     */
     botId?: string;
 
     /**
@@ -32,12 +89,12 @@ export interface Config {
 
     /**
      * A callback function called once configs are read but before any
-     * environment setup. This will only run once, and before onPrepare.
+     * environment setup. This will only run once and before onPrepare.
      *
      * You can specify a file containing code to run by setting beforeLaunch to
      * the filename string.
      *
-     * At this point, global variable 'custody' object will NOT be set up,
+     * At this point global variable 'custody' object will NOT be set up,
      * and globals from the test framework will NOT be available. The main
      * purpose of this function should be to bring up test dependencies.
      */
@@ -89,6 +146,16 @@ export interface Config {
      * (0 if the tests passed). This is called once per capability.
      */
     onCleanUp?: (exitCode: number) => void;
+
+    /**
+     * Test framework to use. This may be one of: jasmine or mocha.
+     * Default value is 'jasmine'
+     *
+     * Jasmine is fully supported as test and assertion frameworks.
+     * Mocha has limited support. You will need to include your
+     * own assertion framework (such as Chai) if working with Mocha.
+     */
+    framework?: string;
 
     /**
      * Options to be passed to jasmine.

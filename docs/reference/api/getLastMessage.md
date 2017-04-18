@@ -1,6 +1,6 @@
 # csty.getLastMessage
 
-Returns a promise resolving to the last message from the specified/default reciever.
+Returns a promise resolving to the last message from the specified/default receiver.
 
 Example
 ```js
@@ -15,7 +15,7 @@ Details
 | Param | Type | Default | Description |
 |-------|:-----:|:------:|--------|
 |onlyString| boolean | false |return only the string part of the response |
-| reciever | string | config.defaultReciever |The reciever id |
+| receiver | string | config.defaultReceiver |The receiver id |
 
 ### Returns
 

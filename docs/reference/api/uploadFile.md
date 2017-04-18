@@ -1,17 +1,17 @@
 # csty.postMessage
 
-Uploads a file to the specified/default reciever.
+Uploads a file to the specified/default receiver.
      
-This methods waits for a response from the reciever, this
+This methods waits for a response from the receiver, this
 behaviour can be turned off by setting `skipWait: true` in the options.
 
 Example
 ```js
-csty.uploadFile(__dirname + '/images/me.png'); // Uploads 'me.png' to default Reciever.
+csty.uploadFile(__dirname + '/images/me.png'); // Uploads 'me.png' to default Receiver.
 
 csty.postMessage(__dirname + '/images/me.png', { 
-    skipWait: false, // Do not wait for a response before continuing.
-    reciever: 'U192929' // Send file to this user, instead of default.
+    skipWait: true, // Do not wait for any response, i.e. disable implicit wait.
+    receiver: 'U192929' // Send file to this user, instead of default.
 });
 ```
 | Param | Type | Default | Description |
@@ -25,7 +25,7 @@ csty.postMessage(__dirname + '/images/me.png', {
 |------|:--------:|:------:| -------- |
 |comment|string| '' | Initial comment to be attached to the uploaded file. |
 |skipWait|boolean| false |Do not wait for any response |
-|reciever |string | config.defaultReciever |The reciever id|
+|receiver |string | config.defaultReceiver |The receiver id|
 
 ### Returns
 

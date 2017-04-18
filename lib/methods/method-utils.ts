@@ -1,5 +1,5 @@
-import { Logger } from './../logger';
 import * as q from 'q';
+import { Logger } from './../logger';
 let waitLogger = new Logger('Wait');
 
 const DEFAULT_WAIT_TIMEOUT = 10000;

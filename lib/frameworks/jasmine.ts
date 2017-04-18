@@ -1,15 +1,15 @@
-import { controlFlow } from './../controlFlow';
 import * as q from 'q';
+import { controlFlow } from './../controlFlow';
 
 let RunnerReporter = function (emitter) {
     this.emitter = emitter;
-    this.testResult = [],
-        this.failedCount = 0;
+    this.testResult = [];
+    this.failedCount = 0;
 };
 
 RunnerReporter.prototype.jasmineStarted = function () {
     // Need to initiate startTime here, in case reportSpecStarting is not
-    // called (e.g. when fit is used)
+    // called (e.g. when fit is used).
     this.startTime = new Date();
 };
 

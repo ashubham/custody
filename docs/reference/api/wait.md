@@ -23,4 +23,4 @@ csty.postMessage('Are you up?');
 
 | Type | Description |
 | -----| :-----------|
-|Promise\<T\>|A promise that will be fulfilled with the first truthy value returned by the condition function, or rejected if the condition times out.|
+|Promise\<T\>|A promise that will be fulfilled with the first truthy value returned by the condition function or rejected if the condition times out.|

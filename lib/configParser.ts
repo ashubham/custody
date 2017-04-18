@@ -1,10 +1,10 @@
-import { Platform } from './platforms/platform';
 import * as glob from 'glob';
 import * as path from 'path';
-
-import { Config, SupportedPlatforms, platformNameToPlatform } from './config';
+import { Config, platformNameToPlatform, SupportedPlatforms } from './config';
 import { ConfigError } from './exitCodes';
 import { Logger } from './logger';
+import { Platform } from './platforms/platform';
+
 
 let logger = new Logger('configParser');
 
@@ -44,10 +44,10 @@ export class ConfigParser {
         patterns = (typeof patterns === 'string') ? [patterns] : patterns;
 
         if (patterns) {
-            for (let fileName of patterns) {
-                let matches = glob.hasMagic(fileName) ? glob.sync(fileName, { cwd }) : [fileName];
+            for (let filePattern of patterns) {
+                let matches = glob.hasMagic(filePattern) ? glob.sync(filePattern, { cwd }) : [filePattern];
                 if (!matches.length && !opt_omitWarnings) {
-                    logger.warn('pattern ' + fileName + ' did not match any files.');
+                    logger.warn('pattern ' + filePattern + ' did not match any files.');
                 }
                 for (let match of matches) {
                     let resolvedPath = path.resolve(cwd, match);
@@ -61,7 +61,7 @@ export class ConfigParser {
     /**
      * Returns only the specs that should run currently based on `config.suite`
      *
-     * @return {Array} An array of globs locating the spec files
+     * @return {Array} An array of globs locating the spec files.
      */
     static getSpecs(config: Config): Array<string> {
         let specs: Array<string> = [];
@@ -93,15 +93,7 @@ export class ConfigParser {
      * @param {Object} additionalConfig
      * @param {string} relativeTo the file path to resolve paths against
      */
-    private addConfig_(additionalConfig: any, relativeTo: string): void {
-        // All filepaths should be kept relative to the current config location.
-        // This will not affect absolute paths.
-        ['frameworkPath'].forEach(
-            (name) => {
-                if (additionalConfig[name] && typeof additionalConfig[name] === 'string') {
-                    additionalConfig[name] = path.resolve(relativeTo, additionalConfig[name]);
-                }
-            });
+    private addConfig_(additionalConfig: any, relativeTo: string): void {    
         if (additionalConfig['platform'] && typeof additionalConfig['platform'] === 'string') {
             let platformName = additionalConfig['platform'];
             additionalConfig['platform'] = platformNameToPlatform[platformName];
@@ -111,7 +103,7 @@ export class ConfigParser {
     }
 
     /**
-     * Public function specialized towards merging in a file's config
+     * Public function specialized towards merging in a file's config.
      *
      * @public
      * @param {String} filename
@@ -137,7 +129,7 @@ export class ConfigParser {
     }
 
     /**
-     * Public function specialized towards merging in config from argv
+     * Public function specialized towards merging in config from argv.
      *
      * @public
      * @param {Object} argv
@@ -148,7 +140,7 @@ export class ConfigParser {
     }
 
     /**
-     * Public getter for the final, computed config object
+     * Public getter for the final computed config object.
      *
      * @public
      * @return {Object} config
@@ -189,7 +181,7 @@ let makeArray = function (item: any): any {
 
 /**
  * Adds to an array all the elements in another array without adding any
- * duplicates
+ * duplicates.
  *
  * @param {Array<string>} dest The array to add to
  * @param {Array<string>} src The array to copy from

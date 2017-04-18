@@ -1,15 +1,15 @@
-import { Task } from './task';
-import { TestMethods } from './methods/testMethods';
-import { Platform } from './platforms/platform';
-import { EventEmitter } from 'events';
-import * as q from 'q';
-import * as util from 'util';
-
-import { Config } from './config';
-import { ConfigError } from './exitCodes';
-import { Logger } from './logger';
 import * as helper from './util';
 import * as platforms from './platforms/platforms';
+import * as q from 'q';
+import * as util from 'util';
+import { Config } from './config';
+import { ConfigError } from './exitCodes';
+import { EventEmitter } from 'events';
+import { Logger } from './logger';
+import { Platform } from './platforms/platform';
+import { Task } from './task';
+import { TestMethods } from './methods/testMethods';
+
 
 declare let global: any;
 declare let process: any;
@@ -75,7 +75,7 @@ export class Runner extends EventEmitter {
             logger.warn(
                 'Ignoring unknown extra flags: ' + unknownFlags.join(', ') + '. This will be' +
                 ' an error in future versions, please use --disableChecks flag to disable the ' +
-                ' Custody CLI flag checks. ');
+                ' Custody CLI flag checks.');
         }
         return helper.runFilenameOrFn_(this.config_.configDir, this.preparer_);
     }

@@ -1,7 +1,7 @@
-import { Message, MessageTypes } from './message';
-import { Logger } from './../logger';
-import diff from '../diff';
 import * as q from 'q';
+import diff from '../diff';
+import { Logger } from './../logger';
+import { Message, MessageTypes } from './message';
 let logger = new Logger('Platform');
 export enum GroupTypes {
     None,
@@ -22,7 +22,8 @@ export class Platform {
     }
 
     auth(): PromiseLike<Platform> {
-        return q.resolve(this);
+        logger.warn('Method not implemented');
+        return q.reject('auth: Method not implemented');
     }
     normalize(inputObj, additionalNormalizer?: (msg: any) => any) {
         this.normalizers.forEach(normalizer => {
@@ -49,7 +50,11 @@ export class Platform {
         src: any,
         target: string|object,
         additionalNormalizer?: (msg: any) => any,
-        skipNormalize?: boolean) : any {
+        skipNormalize?: boolean): any {
+        if (!!skipNormalize) {
+            return diff.diff(src, target);
+        }
+        
         let normalizedSrc = this.normalize(src, additionalNormalizer);
         target = this.normalizeTarget(target);
         return diff.diff(normalizedSrc, target);
@@ -61,12 +66,12 @@ export class Platform {
     }
 
     //TODO(Ashish): Support Emojis/URL.    
-    post(message: string, skipMention?: boolean, reciever?: string): PromiseLike<any> {
+    post(message: string, skipMention?: boolean, receiver?: string): PromiseLike<any> {
         logger.warn('Method not implemented');
         return q.reject('Post: Method not implemented');
     }
 
-    uploadFile(absPath: string, comment?: string, reciever?: string): PromiseLike<any> {
+    uploadFile(absPath: string, comment?: string, receiver?: string): PromiseLike<any> {
         logger.warn('Method not implemented');
         return q.reject('Post: Method not implemented');
     }

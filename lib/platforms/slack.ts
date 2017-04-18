@@ -1,11 +1,11 @@
-import { Message, MessageTypes } from './message';
-import { Logger } from './../logger';
-import { WebClient } from '@slack/client';
-import { createKeyDeleteNormalizer, createAddKeyNormalizer } from './normalizers';
-import { Platform, GroupTypes } from './platform';
-import * as q from 'q';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+import * as q from 'q';
+import { createAddKeyNormalizer, createKeyDeleteNormalizer } from './normalizers';
+import { GroupTypes, Platform } from './platform';
+import { Logger } from './../logger';
+import { Message, MessageTypes } from './message';
+import { WebClient } from '@slack/client';
 
 let logger = new Logger('slack');
 
@@ -51,10 +51,14 @@ export class Slack extends Platform {
         [GroupTypes.PUBLIC]: 'channels'
     };
 
-    constructor(token: string) {
+    constructor(private token: string) {
         super();
         logger.info('Using Slack Platform');
         this.client = new WebClient(token);
+    }
+
+    auth(): PromiseLike<any> {
+        return q.resolve(this);
     }
 
     post(message: string, skipMention?: boolean, group?: string): PromiseLike<any> {
@@ -74,14 +78,14 @@ export class Slack extends Platform {
     uploadFile(
         absPath: string,
         comment?: string,
-        reciever: string = this.defaultRecipient
+        receiver: string = this.defaultRecipient
     ) {
         let filename = path.basename(absPath);
         let file = fs.createReadStream(absPath);
         return this.client.files.upload(filename, {
             file: file,
             initial_comment: comment,
-            channels: reciever
+            channels: receiver
         });
     }
     

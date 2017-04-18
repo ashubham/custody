@@ -1,8 +1,8 @@
-import { SupportedPlatforms, Config } from '../config';
-import { Platform } from './platform';
+import { Config, SupportedPlatforms } from '../config';
 import { Logger } from './../logger';
-import { Slack } from './slack';
 import { Messenger } from './messenger';
+import { Platform } from './platform';
+import { Slack } from './slack';
 
 let logger = new Logger('getPlatform');
 

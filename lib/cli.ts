@@ -40,7 +40,7 @@ let optimistOptions: any = {
         token: 'API token',
         email: 'User email to send messages as (Messenger only)',
         password: 'User password of the email provided (Messenger only).' +
-        ' PS: Messenger does not provide token based user messages yet.',
+        ' Note: Messenger does not provide token based user messages yet.',
         defaultRecipient: 'The default channel/group/user where the test messages would' +
         ' be posted.',
         botId: 'The identification for the bot to be tested (for mentions etc.)',
@@ -112,7 +112,7 @@ if (argv.exclude) {
     argv.exclude = processFilePatterns_(<string>argv.exclude);
 }
 
-// Use default configuration, if it exists.
+// Use default configuration if it exists.
 let configFile: string = argv._[0];
 if (!configFile) {
     if (fs.existsSync('./custody.conf.js')) {
@@ -128,6 +128,6 @@ if (!configFile && !argv.elementExplorer && args.length < 3) {
     process.exit(1);
 }
 
-// Run the launcher
+// Run the launcher.
 import * as launcher from './launcher';
 launcher.init(configFile, argv);

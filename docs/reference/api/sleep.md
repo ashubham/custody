@@ -2,7 +2,7 @@
 
 Explicitly waits for `n` miliseconds to pass before continuing.
 
-PS: Please use this for debugging purposes only. As using explicit waits in your 
+Use this  method for debugging purposes only as using explicit waits in your 
 tests is not a good practice and may make your tests flaky. Custody has implicit
 waits built in the api methods.
 

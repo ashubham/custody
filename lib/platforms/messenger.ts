@@ -1,16 +1,16 @@
+import * as fs from 'fs';
+import * as path from 'path';
+import * as q from 'q';
+import {
+    createAddKeyNormalizer,
+    createDeleteNullUndefinedNormalizer,
+    createKeyDeleteNormalizer,
+    createRenameKeyNormalizer
+    } from './normalizers';
+import { Logger } from './../logger';
 import { Message, MessageTypes } from './message';
 import { Platform } from './platform';
 import login = require('facebook-chat-api');
-import { Logger } from './../logger';
-import * as q from 'q';
-import * as path from 'path';
-import * as fs from 'fs';
-import {
-    createKeyDeleteNormalizer,
-    createRenameKeyNormalizer,
-    createDeleteNullUndefinedNormalizer,
-    createAddKeyNormalizer
-} from "./normalizers";
 
 let logger = new Logger('Messenger');
 
@@ -47,6 +47,7 @@ export class Messenger extends Platform {
         let deferred = q.defer();
         login({ email: this.email, password: this.password }, (err, api) => {
             if (err) {
+                logger.error('Authentication Failed');
                 return deferred.reject(this);
             }
             this.client = api;
@@ -74,7 +75,7 @@ export class Messenger extends Platform {
     uploadFile(
         absPath: string,
         comment: string = '',
-        reciever: string = this.defaultRecipient
+        receiver: string = this.defaultRecipient
     ): PromiseLike<any> {
         let message = {
             attachment: fs.createReadStream(absPath),

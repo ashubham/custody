@@ -3,7 +3,7 @@ exports.config = {
     // platform to test slack/messenger are supported
     platform: "slack",
 
-    // API token used to hit slack
+    // API token used to test slack
     token: process.env.slackAPIToken,
 
     // Default recipient to whom all messages would be sent.

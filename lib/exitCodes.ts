@@ -21,7 +21,7 @@ export class CustodyError extends IError {
         this.message = message;
         this.code = code;
 
-        // replacing the stack trace with the thrown error stack trace.
+        // Replacing the stack trace with the thrown error stack trace.
         if (error) {
             let custodyError = error as CustodyError;
             this.stack = custodyError.stack;

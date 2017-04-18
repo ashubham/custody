@@ -1,9 +1,9 @@
-import { Logger } from './logger';
+import * as q from 'q';
 import { EventEmitter } from 'events';
-import * as Q from 'q';
+import { Logger } from './logger';
 let logger = new Logger('Control-Flow');
 export class ControlFlow extends EventEmitter {
-    private commandChain = Q.when(undefined);
+    private commandChain = q.when(undefined);
     private numTasks: number = 0;
     private _isIdle: boolean = false;
     constructor() {
@@ -30,14 +30,14 @@ export class ControlFlow extends EventEmitter {
                 }
                 this.emit('idle');
                 this._isIdle = true;
-                return Q.reject(err);
+                return q.reject(err);
             });
     }
 
-    promise = Q.Promise;
+    promise = q.Promise;
 
     reset(): void {
-        this.commandChain = Q.resolve(undefined);
+        this.commandChain = q.resolve(undefined);
     }
 
     isIdle(): boolean {

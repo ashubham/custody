@@ -1,16 +1,16 @@
 'use strict';
 
-var gulp = require('gulp');
-var runSequence = require('run-sequence');
 var spawn = require('child_process').spawn;
 var spawnSync = require('child_process').spawnSync;
-var tslint = require('gulp-tslint');
-var eslint = require('gulp-eslint');
-var tar = require('gulp-tar');
-var gzip = require('gulp-gzip');
 var fs = require('fs');
-var path = require('path');
 var glob = require('glob');
+var gulp = require('gulp');
+var eslint = require('gulp-eslint');
+var gzip = require('gulp-gzip');
+var tar = require('gulp-tar');
+var tslint = require('gulp-tslint');
+var path = require('path');
+var runSequence = require('run-sequence');
 var semver = require('semver');
 
 var runSpawn = function (done, task, optArg, optIo) {

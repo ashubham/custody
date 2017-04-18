@@ -5,14 +5,14 @@ Custody is a Node.js program. To run, you will need to have Node.js(>6) installe
 ## Prerequisites
 
 
-By default, Custody uses the Jasmine test framework for its testing interface. You could however use Mocha too. This tutorial assumes some familiarity with Jasmine, and we will use version 2.4.
+By default, Custody uses the Jasmine test framework for its testing interface. However, the choice test framework is flexible and also allows for using Mocha. This tutorial assumes some familiarity with Jasmine and we will use version 2.4.
 
-Additional prereuisites as per the platform:
+Additional prerequisites as per the platform:
 
 ### Slack
 
-Generate a _Slack_ user testing token. One can easily generate tester tokens using the [token generator](https://api.slack.com/custom-integrations/legacy-tokens).
-Or can use an oauth token from [here](https://api.slack.com/docs/oauth).
+Generate a _Slack_ user testing token. You can easily generate tester tokens using the [token generator](https://api.slack.com/custom-integrations/legacy-tokens)
+or can use an oauth token from [here](https://api.slack.com/docs/oauth).
 
 ### Messenger
 
@@ -54,10 +54,10 @@ exports.config = {
   platform: 'slack',
   token: $SLACK_TOKEN,
   specs: ['spec.js'],
-  defaultReciever: 'C123454'
+  defaultReceiver: 'C123454'
 }
 ```
-This configuration tells Custody where your test files (`specs`) are, and which messaging platform to use (`platform`). It specifies that we will be using Jasmine for the test framework. The `token` speciefies the auth token we created in the step above. The `defaultReciever` is the id of the channel where our message would be posted. It will use the defaults for all other configuration.
+This configuration tells Custody where your test files (`specs`) are and which messaging platform to use (`platform`). It specifies that we will be using Jasmine for the test framework. The `token` speciefies the auth token we created in the step above. The `defaultReceiver` is the id of the channel where our message would be posted. It will use the defaults for all other configuration options.
 
 Now run the test with
 ```haskell
