@@ -71,14 +71,14 @@
         <div class="markdown-body"><h1 id="csty.waitforresponsetobe">csty.waitForResponseToBe</h1>
 <p>A convenience method which wraps around <code>csty.wait</code> to wait until a message matching the parameter is recieved.</p>
 <p>This function blocks Custody&#x2019;s control flow, not the javascript runtime. It will only delay future custody commands from being executed (e.g. it will cause Custody to wait before sending future commands to the chat platform).</p>
-<p>Example: Suppose you post a message which asks for a specific reply from the reciever. You can block a Custody client until you get the reply with:</p>
+<p>Example: Suppose you post a message which asks for a specific reply from the receiver. You can block a Custody client until you get the reply with:</p>
 <pre><code class="lang-js">csty.postMessage(<span class="pl-s">&apos;How is the weather today ?&apos;</span>);
 
 csty.waitForResponseToBe({
     <span class="hljs-attr">text</span>: <span class="hljs-regexp">/The weather today is .*/</span>
 });
 </code></pre>
-<p>Also, it allows you to put a normalizer to normalize the recieved message before matching. There are some default normalizer already put. You may see their details
+<p>This method optionally accepts a normalizer to normalize the recieved message before matching. There are default normalizers already implemented, details of their operation can be found here
 <a href="../how/normalization.html">here</a>.</p>
 <pre><code class="lang-js">csty.postMessage(<span class="pl-s">&apos;help&apos;</span>);
 csty.waitForResponseToBe({
@@ -145,10 +145,10 @@ csty.waitForResponseToBe({
 <td>How long to wait for the message.</td>
 </tr>
 <tr>
-<td>reciever</td>
+<td>receiver</td>
 <td style="text-align:center">string</td>
-<td style="text-align:center">config.defaultReciever</td>
-<td>The reciever id</td>
+<td style="text-align:center">config.defaultReceiver</td>
+<td>The receiver id</td>
 </tr>
 </tbody>
 </table>
@@ -163,7 +163,7 @@ csty.waitForResponseToBe({
 <tbody>
 <tr>
 <td>Promise&lt;Message&gt;</td>
-<td style="text-align:left">A promise that will be fulfilled with the file share message recieved, or rejected if it times out waiting.</td>
+<td style="text-align:left">A promise that will be fulfilled with the file share message recieved or rejected if it times out waiting.</td>
 </tr>
 </tbody>
 </table>

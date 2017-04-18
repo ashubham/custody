@@ -79,11 +79,11 @@
         <div class="markdown-body"><h1 id="tutorial">Tutorial</h1>
 <p>Custody is a Node.js program. To run, you will need to have Node.js(&gt;6) installed.</p>
 <h2 id="prerequisites">Prerequisites</h2>
-<p>By default, Custody uses the Jasmine test framework for its testing interface. You could however use Mocha too. This tutorial assumes some familiarity with Jasmine, and we will use version 2.4.</p>
-<p>Additional prereuisites as per the platform:</p>
+<p>By default, Custody uses the Jasmine test framework for its testing interface. However, the choice test framework is flexible and also allows for using Mocha. This tutorial assumes some familiarity with Jasmine and we will use version 2.4.</p>
+<p>Additional prerequisites as per the platform:</p>
 <h3 id="slack">Slack</h3>
-<p>Generate a <em>Slack</em> user testing token. One can easily generate tester tokens using the <a href="https://api.slack.com/custom-integrations/legacy-tokens">token generator</a>.
-Or can use an oauth token from <a href="https://api.slack.com/docs/oauth">here</a>.</p>
+<p>Generate a <em>Slack</em> user testing token. You can easily generate tester tokens using the <a href="https://api.slack.com/custom-integrations/legacy-tokens">token generator</a>
+or can use an oauth token from <a href="https://api.slack.com/docs/oauth">here</a>.</p>
 <h3 id="messenger">Messenger</h3>
 <p><em>Messenger</em> does not support token based messaging for users. So we need
 to use a <code>email/password</code> pair to emulate a user sending mesages to the bot being
@@ -111,10 +111,10 @@ tested.</p>
   <span class="hljs-attr">platform</span>: <span class="pl-s">&apos;slack&apos;</span>,
   <span class="hljs-attr">token</span>: $SLACK_TOKEN,
   <span class="hljs-attr">specs</span>: [<span class="pl-s">&apos;spec.js&apos;</span>],
-  <span class="hljs-attr">defaultReciever</span>: <span class="pl-s">&apos;C123454&apos;</span>
+  <span class="hljs-attr">defaultReceiver</span>: <span class="pl-s">&apos;C123454&apos;</span>
 }
 </code></pre>
-<p>This configuration tells Custody where your test files (<code>specs</code>) are, and which messaging platform to use (<code>platform</code>). It specifies that we will be using Jasmine for the test framework. The <code>token</code> speciefies the auth token we created in the step above. The <code>defaultReciever</code> is the id of the channel where our message would be posted. It will use the defaults for all other configuration.</p>
+<p>This configuration tells Custody where your test files (<code>specs</code>) are and which messaging platform to use (<code>platform</code>). It specifies that we will be using Jasmine for the test framework. The <code>token</code> speciefies the auth token we created in the step above. The <code>defaultReceiver</code> is the id of the channel where our message would be posted. It will use the defaults for all other configuration options.</p>
 <p>Now run the test with</p>
 <pre><code class="lang-haskell"><span class="pl-ent">custody</span> conf.js
 </code></pre>

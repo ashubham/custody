@@ -69,15 +69,15 @@
           </div>
         </div>
         <div class="markdown-body"><h1 id="csty.postmessage">csty.postMessage</h1>
-<p>Posts a message to the specified/default reciever.</p>
-<p>This methods waits for a response from the reciever, it blocks Custody&#x2019;s control flow, not the javascript runtime. It will only delay future custody commands from being executed (e.g. it will cause Custody to wait before sending future commands to the chat platform). This
+<p>Posts a message to the specified/default receiver.</p>
+<p>This methods waits for a response from the receiver, it blocks Custody&#x2019;s control flow, not the javascript runtime. It will only delay future custody commands from being executed (e.g. this method will cause Custody to wait before sending future commands to the chat platform). This
 behaviour can be turned off by setting <code>skipWait: true</code> in the options.</p>
 <p>Example</p>
-<pre><code class="lang-js">csty.postMessage(<span class="pl-s">&apos;Test Message!&apos;</span>); <span class="pl-c">// Posts &apos;Test Message&apos; to default Reciever.</span>
+<pre><code class="lang-js">csty.postMessage(<span class="pl-s">&apos;Test Message!&apos;</span>); <span class="pl-c">// Posts &apos;Test Message&apos; to default Receiver.</span>
 
 csty.postMessage(<span class="pl-s">&apos;Hello&apos;</span>, {
-    <span class="hljs-attr">skipWait</span>: <span class="pl-c1">false</span>, <span class="pl-c">// Do not wait for a response before continuing.</span>
-    reciever: <span class="pl-s">&apos;U192929&apos;</span> <span class="pl-c">// Send message to this user, instead of default.</span>
+    <span class="hljs-attr">skipWait</span>: <span class="pl-c1">true</span>, <span class="pl-c">// Do not wait for any response, i.e. disable implicit wait.</span>
+    receiver: <span class="pl-s">&apos;U192929&apos;</span> <span class="pl-c">// Send message to this user, instead of default.</span>
 });
 </code></pre>
 <table>
@@ -125,13 +125,13 @@ csty.postMessage(<span class="pl-s">&apos;Hello&apos;</span>, {
 <td>skipMention</td>
 <td style="text-align:center">boolean</td>
 <td style="text-align:center">false</td>
-<td>Do not callout the bot/reciver</td>
+<td>Do not call out the bot/reciver</td>
 </tr>
 <tr>
-<td>reciever</td>
+<td>receiver</td>
 <td style="text-align:center">string</td>
-<td style="text-align:center">config.defaultReciever</td>
-<td>The reciever id</td>
+<td style="text-align:center">config.defaultReceiver</td>
+<td>The receiver id</td>
 </tr>
 </tbody>
 </table>

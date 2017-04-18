@@ -69,15 +69,15 @@
           </div>
         </div>
         <div class="markdown-body"><h1 id="csty.postmessage">csty.postMessage</h1>
-<p>Uploads a file to the specified/default reciever.</p>
-<p>This methods waits for a response from the reciever, this
+<p>Uploads a file to the specified/default receiver.</p>
+<p>This methods waits for a response from the receiver, this
 behaviour can be turned off by setting <code>skipWait: true</code> in the options.</p>
 <p>Example</p>
-<pre><code class="lang-js">csty.uploadFile(__dirname + <span class="pl-s">&apos;/images/me.png&apos;</span>); <span class="pl-c">// Uploads &apos;me.png&apos; to default Reciever.</span>
+<pre><code class="lang-js">csty.uploadFile(__dirname + <span class="pl-s">&apos;/images/me.png&apos;</span>); <span class="pl-c">// Uploads &apos;me.png&apos; to default Receiver.</span>
 
 csty.postMessage(__dirname + <span class="pl-s">&apos;/images/me.png&apos;</span>, { 
-    <span class="hljs-attr">skipWait</span>: <span class="pl-c1">false</span>, <span class="pl-c">// Do not wait for a response before continuing.</span>
-    reciever: <span class="pl-s">&apos;U192929&apos;</span> <span class="pl-c">// Send file to this user, instead of default.</span>
+    <span class="hljs-attr">skipWait</span>: <span class="pl-c1">true</span>, <span class="pl-c">// Do not wait for any response, i.e. disable implicit wait.</span>
+    receiver: <span class="pl-s">&apos;U192929&apos;</span> <span class="pl-c">// Send file to this user, instead of default.</span>
 });
 </code></pre>
 <table>
@@ -128,10 +128,10 @@ csty.postMessage(__dirname + <span class="pl-s">&apos;/images/me.png&apos;</span
 <td>Do not wait for any response</td>
 </tr>
 <tr>
-<td>reciever</td>
+<td>receiver</td>
 <td style="text-align:center">string</td>
-<td style="text-align:center">config.defaultReciever</td>
-<td>The reciever id</td>
+<td style="text-align:center">config.defaultReceiver</td>
+<td>The receiver id</td>
 </tr>
 </tbody>
 </table>

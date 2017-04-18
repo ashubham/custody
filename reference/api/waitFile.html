@@ -68,9 +68,9 @@
         </div>
         <div class="markdown-body"><h1 id="csty.waitforfileshare">csty.waitForFileShare</h1>
 <p>A convenience method which wraps around <code>csty.wait</code> to wait until a file is shared
-from the reciever.</p>
+from the receiver.</p>
 <p>This function blocks Custody&#x2019;s control flow, not the javascript runtime. It will only delay future custody commands from being executed (e.g. it will cause Custody to wait before sending future commands to the chat platform).</p>
-<p>Example: Suppose you post a message which asks for a file to be shared from the reciever. You can block a Custody client until it shared with:</p>
+<p>Example: Suppose you post a message which asks for a file to be shared from the receiver. You can block a Custody client until it shared with:</p>
 <pre><code class="lang-js"><span class="pl-k">var</span> started = startTestServer();
 csty.postMessage(<span class="pl-s">&apos;Get me a cat picture.&apos;</span>);
 csty.waitForFileShare();
@@ -87,10 +87,10 @@ expect(csty.getLastMessage(<span class="pl-c1">true</span>)).toBe(<span class="p
 </thead>
 <tbody>
 <tr>
-<td>opt_reciever</td>
+<td>opt_receiver</td>
 <td style="text-align:center">string</td>
-<td style="text-align:center">config.defaultReciever</td>
-<td>The reciever id</td>
+<td style="text-align:center">config.defaultReceiver</td>
+<td>The receiver id</td>
 </tr>
 <tr>
 <td>opt_timeout</td>
@@ -111,7 +111,7 @@ expect(csty.getLastMessage(<span class="pl-c1">true</span>)).toBe(<span class="p
 <tbody>
 <tr>
 <td>Promise&lt;Message&gt;</td>
-<td style="text-align:left">A promise that will be fulfilled with the file share message recieved, or rejected if it times out waiting.</td>
+<td style="text-align:left">A promise that will be fulfilled with the file share message recieved or rejected if it times out waiting.</td>
 </tr>
 </tbody>
 </table>
