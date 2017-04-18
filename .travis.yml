@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+- 6.9
+
+env:
+  global:
+    - GIT_NAME: ashubham
+    - GIT_EMAIL: ashubham@gmail.com
+    - GITHUB_REPO: ashubham/custody
+    - GIT_SOURCE: _docpress
+
+script:
+- npm test     # ...or whatever your test command is
+- ./node_modules/.bin/docpress build
+
+after_success:
+- if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then ./node_modules/.bin/git-update-ghpages -e; fi

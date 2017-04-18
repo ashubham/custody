@@ -1,0 +1,55 @@
+{
+    "env": {
+        "node": true,
+        "es6": true
+    },
+    "globals": {
+        "beforeEach": false,
+        "beforeAll": false,
+        "afterAll": false,
+        "afterEach": false,
+        "expect": false,
+        "it": false,
+        "describe": false,
+        "csty": false,
+        "jasmine": false
+    },
+    "rules": {
+        "no-trailing-spaces": 2,
+        "no-bitwise": 2,
+        "camelcase": 2,
+        "curly": 2,
+        "eqeqeq": 0,
+        "guard-for-in": 2,
+        "wrap-iife": 0,
+        "indent": [
+            2,
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
+        "complexity": 0,
+        "max-depth": [
+            2,
+            6
+        ],
+        "max-len": 0,
+        "max-params": [
+            2,
+            20
+        ],
+        "max-statements": 0,
+        "new-cap": 0,
+        "no-caller": 2,
+        "no-empty": 2,
+        "no-new": 0,
+        "no-plusplus": 0,
+        "quotes": 0,
+        "no-undef": 2,
+        "no-unused-vars": 0,
+        "no-eq-null": 2,
+        "linebreak-style": 2,
+        "eol-last": 2
+    }
+}

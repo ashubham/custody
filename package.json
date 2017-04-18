@@ -1,0 +1,73 @@
+{
+  "name": "custody",
+  "version": "0.1.11",
+  "description": "e2e testing for chatbots",
+  "scripts": {
+    "build": "gulp",
+    "unit-test": "NODE_ENV=test mocha --recursive --compilers ts:ts-node/register --bail 'test/**/*.ts'",
+    "test": "nyc npm run unit-test && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "prepublishOnly": "gulp prepublish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashubham/custody.git"
+  },
+  "keywords": [
+    "e2e",
+    "chatbots",
+    "bot",
+    "conversational-ui",
+    "conversation"
+  ],
+  "author": "ashubham@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashubham/custody/issues"
+  },
+  "bin": {
+    "custody": "bin/custody"
+  },
+  "main": "built/index.js",
+  "typings": "built/index.d.ts",
+  "homepage": "https://github.com/ashubham/custody#readme",
+  "devDependencies": {
+    "@types/jasmine": "^2.5.47",
+    "@types/lodash": "^4.14.61",
+    "@types/node": "^7.0.12",
+    "@types/optimist": "0.0.29",
+    "@types/q": "^1.0.0",
+    "chai": "^3.5.0",
+    "coveralls": "^2.13.0",
+    "docpress": "^0.7.1",
+    "eslint": "^3.18.0",
+    "git-update-ghpages": "^1.3.0",
+    "gulp": "^3.9.1",
+    "gulp-eslint": "^3.0.1",
+    "gulp-gzip": "^1.4.0",
+    "gulp-tar": "^1.9.0",
+    "gulp-tslint": "^7.1.0",
+    "istanbul": "^0.4.5",
+    "jshint": "^2.9.4",
+    "markdown-it-decorate": "^1.2.2",
+    "nyc": "^10.2.0",
+    "run-sequence": "^1.2.2",
+    "sinon": "^2.1.0",
+    "ts-node": "^3.0.2",
+    "tslint": "^5.0.0",
+    "tslint-eslint-rules": "^3.5.1",
+    "typescript": "^2.2.2",
+    "vrsource-tslint-rules": "^4.0.1"
+  },
+  "dependencies": {
+    "@slack/client": "^3.9.0",
+    "facebook-chat-api": "^1.3.0",
+    "jasmine": "^2.5.3",
+    "jasminewd2": "^2.0.0",
+    "jsondiffpatch": "^0.2.4",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
+    "optimist": "^0.6.1",
+    "q": "^1.5.0",
+    "slack-node": "^0.1.8"
+  }
+}
