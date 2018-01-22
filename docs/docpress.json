@@ -4,6 +4,9 @@
         "https://ricostacruz.com/docpress-rsc/style.css",
         "docs/assets/custom.css"
     ],
+    "scripts": [
+        "scripts/stars.js"
+    ],
     "markdown": {
         "typographer": true,
         "plugins": {
