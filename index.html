@@ -19,6 +19,8 @@
               <ul class="headings heading-list">
                 <li class="heading-item -depth-2"><a class="hlink link-getting-started" href="#getting-started">Getting Started</a>
                 </li>
+                <li class="heading-item -depth-2"><a class="hlink link-installation" href="#installation">Installation</a>
+                </li>
                 <li class="heading-item -depth-2"><a class="hlink link-basic-usage" href="#basic-usage">Basic Usage</a>
                 </li>
               </ul>
@@ -87,12 +89,13 @@ Supports Messenger, Slack, more ? Bots are everywhere, and they need to behave!<
 <p>Visit <a href="http://ashubham.github.io/custody">Custody Website</a> for all documentation.</p>
 <p>For a quick setup and run:</p>
 <ul>
-<li>Follow the <a href="http://ashubham.github.io/custody/tutorial.html">Tutorial</a></li>
+<li>Follow the <a href="http://ashubham.github.io/custody/start/tutorial.html">Tutorial</a></li>
 <li><a href="https://ashubham.github.io/custody/reference/api/postMessage.html">API Reference</a></li>
 </ul>
+<h2 id="installation">Installation</h2>
+<p><code>$ npm i -g custody</code></p>
 <h2 id="basic-usage">Basic Usage</h2>
 <hr>
-<p><code>$ npm i -g custody</code></p>
 <p><code>$ custody --platform=slack --framework=jasmine --token=xoxp-123-123 --specs=test/**/* --defaultRecipient=C928721</code></p>
 <pre><code class="lang-javascript"><span class="pl-c">// test/sample.tests.js</span>
 describe(<span class="pl-s">&apos;This is a sample test&apos;</span>, () =&gt; {

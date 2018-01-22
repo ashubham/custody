@@ -13,6 +13,11 @@
             "id": "getting-started"
           },
           {
+            "title": "Installation",
+            "depth": 2,
+            "id": "installation"
+          },
+          {
             "title": "Basic Usage",
             "depth": 2,
             "id": "basic-usage"
@@ -205,6 +210,11 @@
           "title": "Getting Started",
           "depth": 2,
           "id": "getting-started"
+        },
+        {
+          "title": "Installation",
+          "depth": 2,
+          "id": "installation"
         },
         {
           "title": "Basic Usage",
