@@ -390,6 +390,7 @@
     "docs/reference/api/wait.md": "reference/api/wait.html",
     "docs/reference/how/normalization.md": "reference/how/normalization.html",
     "docs/docpress.json": "docpress.json",
-    "docs/assets/custom.css": "assets/custom.css"
+    "docs/assets/custom.css": "assets/custom.css",
+    "docs/scripts/stars.js": "scripts/stars.js"
   }
 }

@@ -36,3 +36,9 @@
     }
   }
 }
+
+.right iframe {
+  top: 18px;
+  left: 12px;
+  position: relative;
+}
