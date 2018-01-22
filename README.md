@@ -21,14 +21,16 @@ Supports Messenger, Slack, more ? Bots are everywhere, and they need to behave!
 Visit [Custody Website](http://ashubham.github.io/custody) for all documentation.
 
 For a quick setup and run:
- - Follow the [Tutorial](http://ashubham.github.io/custody/tutorial.html)
+ - Follow the [Tutorial](http://ashubham.github.io/custody/start/tutorial.html)
  - [API Reference](https://ashubham.github.io/custody/reference/api/postMessage.html)
 
 
- ## Basic Usage
- -------------------
+## Installation
 
 `$ npm i -g custody`
+
+ ## Basic Usage
+ -------------------
 
 `$ custody --platform=slack --framework=jasmine --token=xoxp-123-123 
     --specs=test/**/* --defaultRecipient=C928721`
