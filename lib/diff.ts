@@ -1,6 +1,6 @@
 import * as jsondiffpatch from 'jsondiffpatch';
 
-let diff = jsondiffpatch.create();
+let diff: any = (jsondiffpatch as any).create();
 
 let stringMatchFilter: any = function (context) {
     let str, regex;
